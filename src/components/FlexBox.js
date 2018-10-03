@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import styled from 'styled-components'
 import ButtonView from './ButtonView'
+import { Ionicons, Entypo } from '@expo/vector-icons';
+
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -55,7 +57,7 @@ export default class FlexBox extends React.Component {
                     <ButtonView />
                 </StyledViewTwo>
                 <StyledViewThree>
-                    <Text>HELLO</Text>
+                    <Text>HELOOO</Text>
                 </StyledViewThree>
                 <StyledViewFour>
                     <Text>HELLO</Text>
