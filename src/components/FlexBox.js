@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { Text } from 'react-native'
 import styled from 'styled-components'
 import ButtonView from './ButtonView'
 
@@ -45,22 +45,22 @@ const StyledViewFour = styled.View`
 
 `
 export default class FlexBox extends React.Component {
-    render() {
-        return (
-            <StyledBox>
-                <StyledViewTop>
-                    <Text>HELLO</Text>
-                </StyledViewTop>
-                <StyledViewTwo>
-                    <ButtonView />
-                </StyledViewTwo>
-                <StyledViewThree>
-                    <Text>HELLO</Text>
-                </StyledViewThree>
-                <StyledViewFour>
-                    <Text>HELLO</Text>
-                </StyledViewFour>
-            </StyledBox>
-        );
-    }
+  render () {
+    return (
+      <StyledBox>
+        <StyledViewTop>
+          <Text>HELLO</Text>
+        </StyledViewTop>
+        <StyledViewTwo>
+          <ButtonView />
+        </StyledViewTwo>
+        <StyledViewThree>
+          <Text>HELLO</Text>
+        </StyledViewThree>
+        <StyledViewFour>
+          <Text>HELLO</Text>
+        </StyledViewFour>
+      </StyledBox>
+    )
+  }
 }
