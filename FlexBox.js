@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components'
-import FlexBox from './FlexBox'
+
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -44,21 +44,23 @@ const StyledViewFour = styled.View`
   background-color:#F3FFBD;
 
 `
-
-export default class App extends React.Component {
-  render() {
-    return (
-      <FlexBox />
-
-    );
-  }
+export default class FlexBox extends React.Component {
+    render() {
+        return (
+            <StyledBox>
+                <StyledViewTop>
+                    <Text>HELLO</Text>
+                </StyledViewTop>
+                <StyledViewTwo>
+                    <Text style={{ color: '#ffffff' }} > HELLO</Text>
+                </StyledViewTwo>
+                <StyledViewThree>
+                    <Text>HELLO</Text>
+                </StyledViewThree>
+                <StyledViewFour>
+                    <Text>HELLO</Text>
+                </StyledViewFour>
+            </StyledBox>
+        );
+    }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

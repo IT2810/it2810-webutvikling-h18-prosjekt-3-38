@@ -5,7 +5,7 @@ export default class FrontPageWrapper extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Open up App.js to start working on your appHELEVETE!</Text>
+                <Text>Open up App.js to start working on your app!ahhhahha</Text>
                 <Text>What a memer!</Text>
             </View>
         );
