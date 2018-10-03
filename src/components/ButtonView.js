@@ -9,9 +9,6 @@ const StyledButtonBox = styled.View`
   flex-direction:row;
   justify-content:center;
   align-Items: center;
-
-
-
 `
 
 export default class ButtonView extends React.Component {
