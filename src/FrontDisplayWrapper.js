@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import styled from 'styled-components'
+import FlexBox from './FlexBox'
 
-export default class FrontPageWrapper extends React.Component {
+
+
+export default class FrontDisplayWrapper extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!ahhhahha</Text>
-                <Text>What a memer!</Text>
-            </View>
+            <FlexBox />
         );
     }
 }

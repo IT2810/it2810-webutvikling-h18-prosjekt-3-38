@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components'
-
+import ButtonView from './ButtonView'
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -18,7 +18,7 @@ const StyledViewTop = styled.View`
 
 `
 const StyledViewTwo = styled.View`
-  flex: 3; 
+  flex: 1; 
   align-items: center;
   flex-direction:column;
   background-color:#70C1B3;
@@ -52,7 +52,7 @@ export default class FlexBox extends React.Component {
                     <Text>HELLO</Text>
                 </StyledViewTop>
                 <StyledViewTwo>
-                    <Text style={{ color: '#ffffff' }} > HELLO</Text>
+                    <ButtonView />
                 </StyledViewTwo>
                 <StyledViewThree>
                     <Text>HELLO</Text>
