@@ -24,7 +24,7 @@
     "jest": "^23.6.0",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
-    "styled-components": "^3.4.9"
+    "styled-components": "^3.4.9",
     "react-native-cli": "^2.0.1",
     "react-native-material-ui": "^1.30.1"
   },
