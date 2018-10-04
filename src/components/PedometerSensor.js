@@ -1,7 +1,15 @@
 import React from 'react'
 import Expo from 'expo'
 import { Pedometer } from 'expo'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
+import styled from 'styled-components'
+
+const StyledView = styled.View`
+  flex: 1;
+  margin-top: 15;
+  align-items: center;
+  justify-content: center;
+`
 
 export default class PedometerSensor extends React.Component {
     state = {
@@ -51,16 +59,16 @@ export default class PedometerSensor extends React.Component {
         })
       }
     )
-  };
+  }
 
   _unsubscribe = () => {
     this._subscription && this._subscription.remove()
     this._subscription = null
-  };
+  }
 
   render () {
     return (
-      <View style={styles.container}>
+      <StyledView>
         <Text>
           Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
         </Text>
@@ -68,18 +76,9 @@ export default class PedometerSensor extends React.Component {
           Steps taken in the last 24 hours: {this.state.pastStepCount}
         </Text>
         <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
-      </View>
+      </StyledView>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 15,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
 
 Expo.registerRootComponent(PedometerSensor)
