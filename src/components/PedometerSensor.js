@@ -69,9 +69,7 @@ export default class PedometerSensor extends React.Component {
   render () {
     return (
       <StyledView>
-        <Text>
-          Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
-        </Text>
+        {console.log(this.state.isPedometerAvailable)}
         <Text>
           Steps taken in the last 24 hours: {this.state.pastStepCount}
         </Text>
@@ -80,5 +78,3 @@ export default class PedometerSensor extends React.Component {
     )
   }
 }
-
-Expo.registerRootComponent(PedometerSensor)
