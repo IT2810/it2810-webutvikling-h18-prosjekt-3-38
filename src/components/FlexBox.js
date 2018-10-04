@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, AsyncStorage } from 'react-native';
 import styled from 'styled-components'
 import ButtonView from './ButtonView'
 import { Ionicons, Entypo } from '@expo/vector-icons';
@@ -33,7 +33,7 @@ const StyledViewThree = styled.View`
   flex-direction:column;
   align-items: center;
   justify-content:center;
-  background-color:#B2DBBF;
+  background-color:#F0F3BD;
 
 
 `
@@ -44,6 +44,7 @@ const StyledViewFour = styled.View`
   align-items: center;
   justify-content:center;
   background-color:#F3FFBD;
+  
 
 `
 export default class FlexBox extends React.Component {
@@ -57,12 +58,12 @@ export default class FlexBox extends React.Component {
                     <ButtonView />
                 </StyledViewTwo>
                 <StyledViewThree>
-                    <Text>HELOOO</Text>
+                    <Text >HELOOO</Text>
                 </StyledViewThree>
                 <StyledViewFour>
                     <Text>HELLO</Text>
                 </StyledViewFour>
-            </StyledBox>
+            </StyledBox >
         );
     }
 }

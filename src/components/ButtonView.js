@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableHighlight, AsyncStorage } from 'react-native';
 import styled from 'styled-components'
 import { Ionicons, Entypo } from '@expo/vector-icons';
 
@@ -49,46 +49,135 @@ export default class ButtonView extends React.Component {
             emojiSad: false,
             emojiNeutral: false,
             emojiHappy: false,
-            emojiBol: false,
-            pressStatus: false,
+
+        }
+        this.onPress = this.onPress.bind(this);
+
+
+    }
+    //Fires before the render method!
+    componentWillMount() {
+        this.displayData();
+    }
+    fireMultiple(e) {
+        this.onPress(e)
+    }
+    //Needs to be called after each state-change, after onPress has been called.
+    saveData() {
+        if (this.state.emojiSad) {
+            AsyncStorage.setItem('emoji', true)
+            //FIKS RESTEN AV DISSE, SLIK AT DEN SOM ER TRUE BLIR LAGRET. DERETTER BLIR DEN SATT I DISPLAY DATA!
+
+        }
+        let states = [this.state.emojiSad, this.state.emojiNeutral, this.state.emojiHappy]
+    }
+    //Need to fire this method when the application opens!!!!
+    displayData = async () => {
+        console.log("DISPLAY STATE")
+        try {
+            let user = await AsyncStorage.getItem('states');
+            alert(user);
+
+        }
+        catch (error) {
+            alert(error);
+
         }
     }
-    onPress = () => {
-        this.setState({
-            pressStatus: true
-        })
+
+    onPress = (e) => {
+        switch (e) {
+            case 'emojiHappy':
+                if (!this.state.emojiHappy) { //hvis den er false-> Sett den til true og sett alle
+                    // andre til false!
+                    this.setState({ emojiHappy: true },
+                        () => {
+                            this.setState({ emojiNeutral: false },
+                                () => { this.setState({ emojiSad: false }) })
+                        })
+                }
+                if (this.state.emojiHappy) {
+                    this.setState({ emojiHappy: false })
+                }
+                break;
+            case 'emojiNeutral':
+                if (!this.state.emojiNeutral) { //hvis den er false-> Sett den til true og sett alle
+                    // andre til false!
+                    this.setState({ emojiNeutral: true },
+                        () => {
+                            this.setState({ emojiHappy: false },
+                                () => { this.setState({ emojiSad: false }) })
+                        })
+                }
+                if (this.state.emojiNeutral) {
+                    this.setState({ emojiNeutral: false })
+                }
+                break;
+            case 'emojiSad':
+                if (!this.state.emojiSad) { //hvis den er false-> Sett den til true og sett alle
+                    // andre til false!
+                    this.setState({ emojiSad: true },
+                        () => {
+                            this.setState({ emojiHappy: false },
+                                () => { this.setState({ emojiNeutral: false }) })
+                        })
+                }
+                if (this.state.emojiSad) {
+                    this.setState({ emojiSad: false })
+                }
+                break;
+        }
+
+        if (this.state.e) {
+            this.setState({ e: false }, () => { console.log(this.state.pressStatus + "DETTE ER DEN TREDJE") })
+        }
+        else {
+            this.setState({
+                e: true
+            }, () => { console.log(this.state.e + "ANDRE IF!") })
+        }
+        //The states are saved!
+        this.saveData();
+
     }
     //https://facebook.github.io/react-native/docs/touchablehighlight.html
     render() {
         return (
             <View style={{ flex: 1, flexDirection: 'row' }}>
-                <StyledButtonBox style={{ backgroundColor: 'powderblue' }}>
-                    <Entypo name="emoji-sad" size={70} />
-                </StyledButtonBox>
-                <StyledButtonBox style={{ backgroundColor: 'skyblue' }}>
-                    <Entypo name="emoji-neutral" size={70} />
+                <StyledButtonBox style={{ backgroundColor: 'steelblue' }}>
+                    <TouchableHighlight
+                        activeOpacity={1}
+                        onPress={() => this.fireMultiple('emojiSad')}>
+                        <Entypo name="emoji-sad" size={70}
+                            style={
+                                this.state.emojiSad ? iconStyles.leftIcon : iconStyles.beforeClick
+                            }  >
+                        </Entypo>
+                    </TouchableHighlight>
                 </StyledButtonBox>
                 <StyledButtonBox style={{ backgroundColor: 'steelblue' }}>
-                    <View>
-                        <TouchableHighlight
-                            onPress={this.onPress}
-                            activeOpacity={1}
+                    <TouchableHighlight
+                        activeOpacity={1}
+                        onPress={() => this.onPress('emojiNeutral')}>
+                        <Entypo name="emoji-neutral" size={70}
                             style={
-                                this.state.pressStatus
-                                    ? iconStyles.afterClick
-                                    : iconStyles.beforeClick
-                            }
-                            onHideUnderlay={this._onHideUnderlay.bind(this)}
-                            onShowUnderlay={this._onShowUnderlay.bind(this)}>
-                            <Entypo style={
-                                this.state.pressStatus
-                                    ? iconStyles.afterClick
-                                    : iconStyles.beforeClick
-                            } name="emoji-happy" size={70}>
-                            </Entypo>
-                        </TouchableHighlight>
-                    </View>
+                                this.state.emojiNeutral ? iconStyles.middleIcon : iconStyles.beforeClick
+                            }  >
+                        </Entypo>
+                    </TouchableHighlight>
                 </StyledButtonBox>
+                <StyledButtonBox style={{ backgroundColor: 'steelblue' }}>
+                    <TouchableHighlight
+                        activeOpacity={1}
+                        onPress={() => this.onPress('emojiHappy')}>
+                        <Entypo name="emoji-happy" size={70}
+                            style={
+                                this.state.emojiHappy ? iconStyles.rightIcon : iconStyles.beforeClick
+                            }  >
+                        </Entypo>
+                    </TouchableHighlight>
+
+                </StyledButtonBox >
             </View >
         );
     }
@@ -96,9 +185,29 @@ export default class ButtonView extends React.Component {
 
 const iconStyles = StyleSheet.create({
     beforeClick: {
-        color: 'red'
+        color: '#000000',
+        backgroundColor: 'steelblue'
     },
     afterClick: {
-        color: 'blue'
-    }
+        color: '#F0F3BD',
+        backgroundColor: 'steelblue',
+    },
+    leftIcon: {
+        backgroundColor: 'steelblue',
+        //powderblue
+        color: '#f00',
+
+    },
+    middleIcon: {
+        backgroundColor: 'steelblue',
+        //powderblue
+        color: '#F0F3BD',
+        //#FA7921 ORANGE
+    },
+    rightIcon: {
+        backgroundColor: 'steelblue',
+        //powderblue
+        color: '#9BC53D',
+    },
+
 })
