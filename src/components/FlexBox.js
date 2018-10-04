@@ -31,14 +31,6 @@ const StyledViewThree = styled.View`
   justify-content:center;
   background-color:#B2DBBF;
 `
-const StyledViewFour = styled.View`
-  flex: 0.5; 
-  align-items: center;
-  flex-direction:column;
-  align-items: center;
-  justify-content:center;
-  background-color:#F3FFBD;
-`
 
 export default class FlexBox extends React.Component {
   render () {
@@ -53,9 +45,6 @@ export default class FlexBox extends React.Component {
         <StyledViewThree>
           <Text>HELLO</Text>
         </StyledViewThree>
-        <StyledViewFour>
-          <Text>HELLO</Text>
-        </StyledViewFour>
       </StyledBox>
     )
   }
