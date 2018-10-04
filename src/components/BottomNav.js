@@ -14,7 +14,11 @@ class BottomNav extends Component {
     }
     render() {
         return (
-            <BottomNavigation style={{ container: {backgroundColor: this.state.backgroundColor} }} active={this.state.active}>
+            <BottomNavigation
+              style={{
+                container: {backgroundColor: this.state.backgroundColor} }}
+                active={this.state.active}
+            >
                 <BottomNavigation.Action
                     key="home"
                     icon="home"
