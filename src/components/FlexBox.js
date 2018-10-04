@@ -2,7 +2,6 @@ import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components'
 import ButtonView from './ButtonView'
-import BottomNav from './BottomNav'
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -50,7 +49,6 @@ export default class FlexBox extends React.Component {
         <StyledViewThree>
           <Text>HELLO</Text>
         </StyledViewThree>
-        <BottomNav/>
       </StyledBox>
     )
   }
