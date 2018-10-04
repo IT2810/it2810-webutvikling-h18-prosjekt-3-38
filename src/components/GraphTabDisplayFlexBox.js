@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components'
-import ButtonView from './ButtonView'
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -9,13 +8,11 @@ const StyledBox = styled.View`
   background-color:#283018;
 `
 const StyledViewTop = styled.View`
-  flex: 1; 
+  flex: 0.5; 
   flex-direction:column;
   background-color:#247BA0;
   align-items: center;
   justify-content:center;
-  
-
 `
 const StyledViewTwo = styled.View`
   flex: 1; 
@@ -26,40 +23,27 @@ const StyledViewTwo = styled.View`
   justify-content:center;
 `
 const StyledViewThree = styled.View`
-  flex: 1; 
+  flex: 0.75; 
   align-items: center;
   flex-direction:column;
   align-items: center;
   justify-content:center;
   background-color:#B2DBBF;
-
-
 `
-const StyledViewFour = styled.View`
-  flex: 0.5; 
-  align-items: center;
-  flex-direction:column;
-  align-items: center;
-  justify-content:center;
-  background-color:#F3FFBD;
 
-`
-export default class FlexBox extends React.Component {
+export default class GraphTabDisplayFlexBox extends React.Component {
   render () {
     return (
       <StyledBox>
         <StyledViewTop>
-          <Text>HELLO</Text>
+          <Text>Logo goes here</Text>
         </StyledViewTop>
         <StyledViewTwo>
-          <ButtonView />
+          <Text>Graph goes here</Text>
         </StyledViewTwo>
         <StyledViewThree>
-          <Text>HELLO</Text>
+          <Text>Material-ui Card component with stats goes here</Text>
         </StyledViewThree>
-        <StyledViewFour>
-          <Text>HELLO</Text>
-        </StyledViewFour>
       </StyledBox>
     )
   }
