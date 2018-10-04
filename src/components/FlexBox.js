@@ -2,6 +2,7 @@ import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components'
 import ButtonView from './ButtonView'
+import BottomNav from './BottomNav'
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -35,15 +36,7 @@ const StyledViewThree = styled.View`
 
 
 `
-const StyledViewFour = styled.View`
-  flex: 0.5; 
-  align-items: center;
-  flex-direction:column;
-  align-items: center;
-  justify-content:center;
-  background-color:#F3FFBD;
 
-`
 export default class FlexBox extends React.Component {
   render () {
     return (
@@ -57,9 +50,7 @@ export default class FlexBox extends React.Component {
         <StyledViewThree>
           <Text>HELLO</Text>
         </StyledViewThree>
-        <StyledViewFour>
-          <Text>HELLO</Text>
-        </StyledViewFour>
+        <BottomNav/>
       </StyledBox>
     )
   }
