@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+
 import styled from 'styled-components'
 import ButtonView from './ButtonView'
 import { Ionicons, Entypo } from '@expo/vector-icons';
@@ -16,8 +17,6 @@ const StyledViewTop = styled.View`
   background-color:#5DBEB4;
   align-items: center;
   justify-content:center;
-  
-
 `
 const StyledViewTwo = styled.View`
   flex: 1; 
@@ -46,7 +45,7 @@ const StyledViewFour = styled.View`
   background-color:#F3FFBD;
   
 
-`
+
 export default class FlexBox extends React.Component {
     render() {
         return (

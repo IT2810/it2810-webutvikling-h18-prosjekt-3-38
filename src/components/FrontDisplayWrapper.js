@@ -1,23 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import styled from 'styled-components'
+import React from 'react'
 import FlexBox from './FlexBox'
+import styled from 'styled-components'
+import BottomNav from './BottomNav'
 
-
+const StyledBox = styled.View`
+  flex: 1; 
+  flex-direction:column;
+`
 
 export default class FrontDisplayWrapper extends React.Component {
-    render() {
-        return (
-            <FlexBox />
-        );
-    }
+  render () {
+    return (
+      <StyledBox>
+        <FlexBox />
+        <BottomNav/>
+      </StyledBox>
+    )
+  }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

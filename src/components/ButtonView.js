@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableHighlight, AsyncStorage } from 'react-native';
-import styled from 'styled-components'
-import { Ionicons, Entypo } from '@expo/vector-icons';
 
+import styled from 'styled-components'
+import { Entypo } from '@expo/vector-icons'
 
 const StyledButtonBox = styled.View`
   flex: 1; 
@@ -217,3 +217,4 @@ const iconStyles = StyleSheet.create({
     },
 
 })
+
