@@ -1,5 +1,5 @@
 import React from 'react'
-import FlexBox from './FlexBox'
+import FrontDisplayFlexBox from './FrontDisplayFlexBox'
 import styled from 'styled-components'
 import BottomNav from './BottomNav'
 
@@ -12,7 +12,7 @@ export default class FrontDisplayWrapper extends React.Component {
   render () {
     return (
       <StyledBox>
-        <FlexBox />
+        <FrontDisplayFlexBox/>
         <BottomNav/>
       </StyledBox>
     )
