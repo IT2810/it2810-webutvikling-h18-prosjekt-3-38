@@ -1,10 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-
+import React from 'react'
+import { Text } from 'react-native'
 import styled from 'styled-components'
 import ButtonView from './ButtonView'
-import { Ionicons, Entypo } from '@expo/vector-icons';
-
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -35,20 +32,20 @@ const StyledViewThree = styled.View`
   background-color:#F0F3BD;
 `
 
-export default class FlexBox extends React.Component {
-    render() {
-        return (
-            <StyledBox>
-                <StyledViewTop>
-                    <Text>HELLO</Text>
-                </StyledViewTop>
-                <StyledViewTwo>
-                    <ButtonView />
-                </StyledViewTwo>
-                <StyledViewThree>
-                    <Text >HELOOO</Text>
-                </StyledViewThree>
-            </StyledBox >
-        );
-    }
+export default class FrontDisplayFlexBox extends React.Component {
+  render () {
+    return (
+      <StyledBox>
+        <StyledViewTop>
+          <Text>HELLO</Text>
+        </StyledViewTop>
+        <StyledViewTwo>
+          <ButtonView />
+        </StyledViewTwo>
+        <StyledViewThree>
+          <Text >HELOOO</Text>
+        </StyledViewThree>
+      </StyledBox >
+    )
+  }
 }
