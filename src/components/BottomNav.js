@@ -7,22 +7,29 @@ class BottomNav extends Component {
   constructor (props) {
     super(props)
 
-    this.state = { active: 'home' }
+    this.state = {
+      active: 'home',
+      backgroundColor: '#fa5457'
+    }
   }
   render () {
     return (
-      <BottomNavigation active={this.state.active}>
+      <BottomNavigation
+        style={{
+          container: { backgroundColor: this.state.backgroundColor } }}
+        active={this.state.active}
+      >
         <BottomNavigation.Action
           key="home"
           icon="home"
           label="Home"
-          onPress={() => this.setState({ active: 'home' })}
+          onPress={() => this.setState({ active: 'home', backgroundColor: '#fa5457' })}
         />
         <BottomNavigation.Action
           key="graph"
           icon={<Entypo name="line-graph" size={25}/>}
           label="Graph"
-          onPress={() => this.setState({ active: 'graph' })}
+          onPress={() => this.setState({ active: 'graph', backgroundColor: '#01b4bc' })}
         />
       </BottomNavigation>
     )
