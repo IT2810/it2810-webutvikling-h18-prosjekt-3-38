@@ -1,5 +1,4 @@
 import React from 'react'
-import Expo from 'expo'
 import { Pedometer } from 'expo'
 import { Text, View } from 'react-native'
 import styled from 'styled-components'
