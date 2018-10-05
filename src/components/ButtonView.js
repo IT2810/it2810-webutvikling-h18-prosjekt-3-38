@@ -31,11 +31,7 @@ export default class ButtonView extends React.Component {
     this.onPress(e)
   }
   componentWillMount () {
-    console.log('Fetching.......')
     this.fetchData()
-    console.log(this.state.emojiHappy)
-    console.log(this.state.emojiNeutral)
-    console.log(this.state.emojiSad)
   }
 
   // Needs to be called after each state-change, after onPress has been called.
@@ -49,7 +45,6 @@ export default class ButtonView extends React.Component {
 
     // day in state is updated with the correct date, as well as the corresponding emoji!
     this.setState({ dateToday: dateKey }, () => {
-      console.log(this.state.dateToday + ' STATE')
       if (this.state.emojiSad) {
         AsyncStorage.setItem(this.state.dateToday, 'emojiSad')
       } else if (this.state.emojiNeutral) {
@@ -64,17 +59,14 @@ export default class ButtonView extends React.Component {
   }
   // Need to fire this method when the application opens!!!!
   fetchData = async () => {
-    console.log('DISPLAY STATE')
     var today = new Date()
     let todayKey = today.getDate() + '/' + parseInt(today.getMonth() + 1) + '/' + today.getFullYear()
     try {
       let dateAndEmoji = await AsyncStorage.getItem(todayKey)
-      console.log('Element from memory, before state is set!: ' + dateAndEmoji)
 
       // matches this string to the emoji and sets the state.
       this.matchEmojiToString(dateAndEmoji)
     } catch (error) {
-      console.log('No emotion registred for today yet.')
     }
   }
   matchEmojiToString (e) {
@@ -88,7 +80,6 @@ export default class ButtonView extends React.Component {
                 () => {
                   this.setState({ emojiSad: false })
                   this.saveData()
-                  console.log('HAPPY STATE UPDATED UPON STARTUP')
                 })
             })
         } else if (this.state.emojiHappy) {
