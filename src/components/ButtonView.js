@@ -49,6 +49,7 @@ export default class ButtonView extends React.Component {
             emojiSad: false,
             emojiNeutral: false,
             emojiHappy: false,
+            backGround: '#247BA0',
 
         }
         this.onPress = this.onPress.bind(this);
@@ -56,34 +57,36 @@ export default class ButtonView extends React.Component {
 
     }
     //Fires before the render method!
-    componentWillMount() {
-        this.displayData();
-    }
+    //   this.displayData();
+    // }
     fireMultiple(e) {
         this.onPress(e)
     }
     //Needs to be called after each state-change, after onPress has been called.
-    saveData() {
-        if (this.state.emojiSad) {
-            AsyncStorage.setItem('emoji', true)
-            //FIKS RESTEN AV DISSE, SLIK AT DEN SOM ER TRUE BLIR LAGRET. DERETTER BLIR DEN SATT I DISPLAY DATA!
-
-        }
-        let states = [this.state.emojiSad, this.state.emojiNeutral, this.state.emojiHappy]
-    }
+    //https://medium.com/@richardzhanguw/storing-and-retrieving-objects-using-asyncstorage-in-react-native-6bb1745fdcdd
+    /* saveData() {
+         if (this.state.emojiSad) {
+             AsyncStorage.setItem('emoji', true)
+             //FIKS RESTEN AV DISSE, SLIK AT DEN SOM ER TRUE BLIR LAGRET. DERETTER BLIR DEN SATT I DISPLAY DATA!
+ 
+         }
+         let states = [this.state.emojiSad, this.state.emojiNeutral, this.state.emojiHappy]
+     }*/
     //Need to fire this method when the application opens!!!!
-    displayData = async () => {
-        console.log("DISPLAY STATE")
-        try {
-            let user = await AsyncStorage.getItem('states');
-            alert(user);
-
-        }
-        catch (error) {
-            alert(error);
-
-        }
-    }
+    /*
+     displayData = async () => {
+         console.log("DISPLAY STATE")
+         try {
+             let user = await AsyncStorage.getItem('states');
+             alert(user);
+ 
+         }
+         catch (error) {
+             alert(error);
+ 
+         }
+     }
+     */
 
     onPress = (e) => {
         switch (e) {
@@ -137,14 +140,14 @@ export default class ButtonView extends React.Component {
             }, () => { console.log(this.state.e + "ANDRE IF!") })
         }
         //The states are saved!
-        this.saveData();
+        //this.saveData();
 
     }
     //https://facebook.github.io/react-native/docs/touchablehighlight.html
     render() {
         return (
             <View style={{ flex: 1, flexDirection: 'row' }}>
-                <StyledButtonBox style={{ backgroundColor: 'steelblue' }}>
+                <StyledButtonBox style={{ backgroundColor: this.state.backGround }}>
                     <TouchableHighlight
                         activeOpacity={1}
                         onPress={() => this.fireMultiple('emojiSad')}>
@@ -155,7 +158,7 @@ export default class ButtonView extends React.Component {
                         </Entypo>
                     </TouchableHighlight>
                 </StyledButtonBox>
-                <StyledButtonBox style={{ backgroundColor: 'steelblue' }}>
+                <StyledButtonBox style={{ backgroundColor: this.state.backGround }}>
                     <TouchableHighlight
                         activeOpacity={1}
                         onPress={() => this.onPress('emojiNeutral')}>
@@ -166,7 +169,7 @@ export default class ButtonView extends React.Component {
                         </Entypo>
                     </TouchableHighlight>
                 </StyledButtonBox>
-                <StyledButtonBox style={{ backgroundColor: 'steelblue' }}>
+                <StyledButtonBox style={{ backgroundColor: this.state.backGround }}>
                     <TouchableHighlight
                         activeOpacity={1}
                         onPress={() => this.onPress('emojiHappy')}>
@@ -186,28 +189,31 @@ export default class ButtonView extends React.Component {
 const iconStyles = StyleSheet.create({
     beforeClick: {
         color: '#000000',
-        backgroundColor: 'steelblue'
+        backgroundColor: '#247BA0',
     },
     afterClick: {
         color: '#F0F3BD',
-        backgroundColor: 'steelblue',
+        backgroundColor: '#247BA0',
     },
     leftIcon: {
-        backgroundColor: 'steelblue',
+        backgroundColor: '#247BA0',
+
         //powderblue
         color: '#f00',
 
     },
     middleIcon: {
-        backgroundColor: 'steelblue',
+        backgroundColor: '#247BA0',
         //powderblue
-        color: '#F0F3BD',
+        color: '#FF9900',
+        //#fa8925
+        //white: #F0F3BD
         //#FA7921 ORANGE
     },
     rightIcon: {
-        backgroundColor: 'steelblue',
+        backgroundColor: '#247BA0',
         //powderblue
-        color: '#9BC53D',
+        color: '#00FF66',
     },
 
 })

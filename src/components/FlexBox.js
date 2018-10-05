@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import styled from 'styled-components'
 import ButtonView from './ButtonView'
 import { Ionicons, Entypo } from '@expo/vector-icons';
@@ -13,7 +13,7 @@ const StyledBox = styled.View`
 const StyledViewTop = styled.View`
   flex: 1; 
   flex-direction:column;
-  background-color:#247BA0;
+  background-color:#5DBEB4;
   align-items: center;
   justify-content:center;
   
