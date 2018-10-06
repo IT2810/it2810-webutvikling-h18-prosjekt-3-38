@@ -2,6 +2,7 @@ import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components'
 import ButtonView from './ButtonView'
+import SvgLogo from './SvgLogo'
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -11,7 +12,7 @@ const StyledBox = styled.View`
 const StyledViewTop = styled.View`
   flex: 1; 
   flex-direction:column;
-  background-color:#5DBEB4;
+  background-color:#01364c;
   align-items: center;
   justify-content:center;
 `
@@ -37,7 +38,7 @@ export default class FrontDisplayFlexBox extends React.Component {
     return (
       <StyledBox>
         <StyledViewTop>
-          <Text>HELLO</Text>
+          <SvgLogo />
         </StyledViewTop>
         <StyledViewTwo>
           <ButtonView />
