@@ -13,7 +13,7 @@ const StyledButtonBox = styled.View`
 `
 
 export default class ButtonView extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       emojiSad: false,
@@ -27,17 +27,17 @@ export default class ButtonView extends React.Component {
   // Fires before the render method!
   //   this.displayData();
   // }
-  fireMultiple (e) {
+  fireMultiple(e) {
     this.onPress(e)
   }
-  componentWillMount () {
+  componentWillMount() {
     this.fetchData()
   }
 
   // Needs to be called after each state-change, after onPress has been called.
   // Needs to save the name of the emoji that is set to true, with the date as the key!
   // https://medium.com/@richardzhanguw/storing-and-retrieving-objects-using-asyncstorage-in-react-native-6bb1745fdcdd
-  saveData () {
+  saveData() {
     // gets todays date
     var today = new Date()
     let dateKey = today.getDate() + '/' + parseInt(today.getMonth() + 1) + '/' + today.getFullYear()
@@ -69,7 +69,7 @@ export default class ButtonView extends React.Component {
     } catch (error) {
     }
   }
-  matchEmojiToString (e) {
+  matchEmojiToString(e) {
     switch (e) {
       case 'emojiHappy':
         if (!this.state.emojiHappy) { // hvis den er false-> Sett den til true og sett alle
@@ -131,7 +131,7 @@ export default class ButtonView extends React.Component {
     // The states are saved!
   }
   // https://facebook.github.io/react-native/docs/touchablehighlight.html
-  render () {
+  render() {
     return (
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <StyledButtonBox style={{ backgroundColor: this.state.backGround }}>
