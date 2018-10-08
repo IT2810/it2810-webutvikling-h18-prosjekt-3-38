@@ -1,8 +1,36 @@
 import React, { Component } from 'react'
 import { VictoryLine, VictoryChart, VictoryTheme } from 'victory-native'
+import { Pedometer } from 'expo'
 
 export default class PedometerGraph extends Component {
+  constructor () {
+    super()
+    this.getData()
+    console.log(this.state.stepData)
+  }
+  state = {
+    stepData: {}
+  }
+  weekday = ['Sun', 'Mon', 'Tus', 'Wed', 'Thu', 'Fri', 'Sat']
+  async getData () {
+    var d = new Date()
+    for (let x = 0; x <= d.getDay(); x++) {
+      let dif = d.getDay() - x
+      this.setState({
+        stepData: {
+          x: this.weekday[x],
+          y: await Pedometer.getStepCountAsync(d.getDay(), d.getDay() - dif)
+        }
+      })
+    }
+  }
+  componentDidUpdate (prevProps, prevState, snapshot) {
+    if (prevState.stepData[this.weekday[new Date().getDay()]] !== this.state.stepData[this.weekday[new Date().getDay()]]) {
+      this.forceUpdate()
+    }
+  }
   render () {
+    var data = this.this.state.stepData || [{ x: 'test', y: 2456 }]
     return (
       <VictoryChart
         theme={VictoryTheme.material}
@@ -18,15 +46,7 @@ export default class PedometerGraph extends Component {
             data: { stroke: '#c43a31' },
             parent: { border: '1px solid #ccc' }
           }}
-          data={[
-            { x: 'Mon', y: 2303 },
-            { x: 'Tus', y: 3344 },
-            { x: 'Wed', y: 5453 },
-            { x: 'Thur', y: 1432 },
-            { x: 'Fra', y: 4237 },
-            { x: 'Sat', y: 2918 },
-            { x: 'Sun', y: 2423 }
-          ]}
+          data={data}
           interpolation="natural"
         />
       </VictoryChart>
