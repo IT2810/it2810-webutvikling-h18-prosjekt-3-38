@@ -1,3 +1,5 @@
+// NOT USED
+
 import React, { Component } from 'react'
 import BottomNavigation from 'react-native-material-ui/src/BottomNavigation/BottomNavigation.react'
 import { Entypo } from '@expo/vector-icons/'

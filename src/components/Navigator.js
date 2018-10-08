@@ -27,21 +27,24 @@ const Navigator = createMaterialBottomTabNavigator({
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: HomeIcon,
+      barStyle: {
+        backgroundColor: '#247BA0'
+      }
     }
   },
   Graph: { screen: GraphTabDisplayFlexBox,
     navigationOptions: {
       tabBarLabel: 'Graph',
-      tabBarIcon: GraphIcon
+      tabBarIcon: GraphIcon,
+      barStyle: {
+        backgroundColor: '#5fa55a'
+      }
     }
   }
 }, {
   initialRouteName: 'Home',
-  activeTintColor: 'lightblue',
-  inactiveTintColor: 'grey',
-  barStyle: {
-    backgroundColor: 'grey'
-  }
+  activeTintColor: '#f6d51f',
+  inactiveTintColor: 'lightgrey'
 })
 
 export default Navigator
