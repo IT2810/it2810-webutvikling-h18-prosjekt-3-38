@@ -11,7 +11,7 @@ export default class FrontDisplayWrapper extends React.Component {
   render () {
     return (
       <StyledBox>
-        <Navigator style={{ color: 'grey' }}/>
+        <Navigator/>
       </StyledBox>
     )
   }
