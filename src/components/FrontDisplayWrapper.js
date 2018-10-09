@@ -11,6 +11,7 @@ export default class FrontDisplayWrapper extends React.Component {
   render () {
     return (
       <StyledBox>
+        <FrontDisplayFlexBox />
         <Navigator/>
       </StyledBox>
     )
