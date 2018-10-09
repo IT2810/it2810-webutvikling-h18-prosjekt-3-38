@@ -1,24 +1,15 @@
 import React, { Component } from 'react'
 import { VictoryChart, VictoryLine, VictoryTheme } from 'victory-native'
 import { Pedometer } from 'expo'
-import { Text } from 'react-native'
-
-Object.size = (obj) => {
-  var size = 0; var key
-  for (key in obj) {
-    if (obj.hasOwnProperty(key)) size++
-  }
-  return size
-}
 
 export default class PedometerGraph extends Component {
   constructor () {
     super()
     this.getData()
   }
-    state = {
-      stepData: []
-    }
+  state = {
+    stepData: []
+  }
   weekday = ['Sun', 'Mon', 'Tus', 'Wed', 'Thu', 'Fri', 'Sat']
   async getData () {
     var start = new Date()
@@ -34,20 +25,18 @@ export default class PedometerGraph extends Component {
           })
         })
       }, () => {
-        console.log('Updated steps', this.state.stepData)
         this.forceUpdate()
       })
     }
   }
   componentDidUpdate (prevProps, prevState) {
-    if (prevState.stepData !== this.state.stepData) {
+    if (prevState.stepData.length !== this.state.stepData.length) {
       this.forceUpdate()
     }
   }
   dateCheck () {
     let currentDay = new Date().getDay()
-    console.log(this.state.stepData)
-    if (currentDay > 2) {
+    if (currentDay > 1 && this.state.stepData.length > 1) {
       return (
         <VictoryChart
           theme={VictoryTheme.material}
@@ -69,10 +58,6 @@ export default class PedometerGraph extends Component {
         </VictoryChart>
       )
     } else {
-      console.log([
-        { x: 'Sun', y: 2545 },
-        { x: 'Mon', y: 1100 }
-      ])
       return (
         <VictoryChart
           theme={VictoryTheme.material}
