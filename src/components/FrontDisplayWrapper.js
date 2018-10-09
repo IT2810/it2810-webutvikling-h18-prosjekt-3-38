@@ -1,7 +1,6 @@
 import React from 'react'
 import FrontDisplayFlexBox from './FrontDisplayFlexBox'
 import styled from 'styled-components'
-import BottomNav from './BottomNav'
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -13,7 +12,6 @@ export default class FrontDisplayWrapper extends React.Component {
     return (
       <StyledBox>
         <FrontDisplayFlexBox />
-        <BottomNav />
       </StyledBox>
     )
   }
