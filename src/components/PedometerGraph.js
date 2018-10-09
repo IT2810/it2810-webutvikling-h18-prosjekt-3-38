@@ -29,19 +29,24 @@ export default class PedometerGraph extends Component {
       this.setState({
         stepData: this.state.stepData.concat({
           x: this.weekday[x],
-          y: await Pedometer.getStepCountAsync(start, end)
+          y: await Pedometer.getStepCountAsync(start, end).then(result => {
+            return result.steps
+          })
         })
-      }, () => { console.log('Updated steps', this.state.stepData) })
+      }, () => {
+        console.log('Updated steps', this.state.stepData)
+        this.forceUpdate()
+      })
     }
   }
-  componentDidUpdate (prevProps, prevState, snapshot) {
-    console.log(prevState.stepData[this.weekday[new Date().getDay()]] !== this.state.stepData[this.weekday[new Date().getDay()]])
-    if (prevState.stepData[this.weekday[new Date().getDay()]] !== this.state.stepData[this.weekday[new Date().getDay()]]) {
+  componentDidUpdate (prevProps, prevState) {
+    if (prevState.stepData !== this.state.stepData) {
       this.forceUpdate()
     }
   }
   dateCheck () {
     let currentDay = new Date().getDay()
+    console.log(this.state.stepData)
     if (currentDay > 2) {
       return (
         <VictoryChart
@@ -64,6 +69,10 @@ export default class PedometerGraph extends Component {
         </VictoryChart>
       )
     } else {
+      console.log([
+        { x: 'Sun', y: 2545 },
+        { x: 'Mon', y: 1100 }
+      ])
       return (
         <VictoryChart
           theme={VictoryTheme.material}
@@ -81,12 +90,7 @@ export default class PedometerGraph extends Component {
             }}
             data={[
               { x: 'Sun', y: 2545 },
-              { x: 'Mon', y: 1100 },
-              { x: 'Tue', y: 4300 },
-              { x: 'Wed', y: 1020 },
-              { x: 'Thu', y: 3456 },
-              { x: 'Fri', y: 5678 },
-              { x: 'Sat', y: 3400 }
+              { x: 'Mon', y: 1100 }
             ]}
           />
         </VictoryChart>
