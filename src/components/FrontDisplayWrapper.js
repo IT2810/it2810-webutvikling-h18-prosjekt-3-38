@@ -1,6 +1,6 @@
 import React from 'react'
-import FrontDisplayFlexBox from './FrontDisplayFlexBox'
 import styled from 'styled-components'
+import Navigator from './Navigator'
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -12,6 +12,7 @@ export default class FrontDisplayWrapper extends React.Component {
     return (
       <StyledBox>
         <FrontDisplayFlexBox />
+        <Navigator/>
       </StyledBox>
     )
   }
