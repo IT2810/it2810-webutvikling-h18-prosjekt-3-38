@@ -43,12 +43,16 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^4.0.0",
-    "jest-expo": "^30.0.0"
+    "jest-expo": "^30.0.0",
+    "react-test-renderer": "^16.5.2"
   },
   "jest": {
     "preset": "jest-expo",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "moduleNameMapper": {
+      "styled-components": "<rootDir>/node_modules/styled-components/dist/styled-components.native.cjs.js"
+    }
   }
 }
