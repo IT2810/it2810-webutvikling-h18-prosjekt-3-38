@@ -44,7 +44,7 @@ export default class FrontDisplayFlexBox extends React.Component {
           <ButtonView />
         </StyledViewTwo>
         <StyledViewThree>
-          <Text >HELOOO</Text>
+          <Text>HELOOO</Text>
         </StyledViewThree>
       </StyledBox >
     )
