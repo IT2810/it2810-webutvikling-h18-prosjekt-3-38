@@ -18,7 +18,8 @@ class BottomNav extends Component {
     return (
       <BottomNavigation
         style={{
-          container: { backgroundColor: this.state.backgroundColor } }}
+          container: { backgroundColor: this.state.backgroundColor }
+        }}
         active={this.state.active}
       >
         <BottomNavigation.Action
@@ -29,7 +30,7 @@ class BottomNav extends Component {
         />
         <BottomNavigation.Action
           key="graph"
-          icon={<Entypo name="line-graph" size={25}/>}
+          icon={<Entypo name="line-graph" size={25} />}
           label="Graph"
           onPress={() => this.setState({ active: 'graph', backgroundColor: '#01b4bc' })}
         />
