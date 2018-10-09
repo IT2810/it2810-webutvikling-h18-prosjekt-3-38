@@ -1,17 +1,7 @@
 import React, { Component } from 'react'
-import { VictoryLine, VictoryChart, VictoryTheme } from 'victory-native'
-import { Text } from 'react-native'
+import { VictoryChart, VictoryLine, VictoryTheme } from 'victory-native'
 import { Pedometer } from 'expo'
-import styled from 'styled-components'
-
-const Error = styled.Text`
-  text-align: 'center';
-  font-weight: 'bold';
-  font-size: 18;
-  margin-top: 0;
-  width: 200;
-  background-color: 'yellow';
-`
+import { Text } from 'react-native'
 
 Object.size = (obj) => {
   var size = 0; var key
@@ -52,7 +42,7 @@ export default class PedometerGraph extends Component {
   }
   dateCheck () {
     let currentDay = new Date().getDay()
-    if (currentDay > 1) {
+    if (currentDay > 2) {
       return (
         <VictoryChart
           theme={VictoryTheme.material}
@@ -74,7 +64,33 @@ export default class PedometerGraph extends Component {
         </VictoryChart>
       )
     } else {
-      return <Error>Not enough data for this week</Error>
+      return (
+        <VictoryChart
+          theme={VictoryTheme.material}
+          minDomain={{ x: 1, y: 900 }}
+          maxDomain={{ x: 7, y: 6000 }}
+        >
+          <VictoryLine
+            animate={{
+              duration: 2000,
+              onLoad: { duration: 2000 }
+            }}
+            style={{
+              data: { stroke: '#c43a31' },
+              parent: { border: '1px solid #ccc' }
+            }}
+            data={[
+              { x: 'Sun', y: 2545 },
+              { x: 'Mon', y: 1100 },
+              { x: 'Tue', y: 4300 },
+              { x: 'Wed', y: 1020 },
+              { x: 'Thu', y: 3456 },
+              { x: 'Fri', y: 5678 },
+              { x: 'Sat', y: 3400 }
+            ]}
+          />
+        </VictoryChart>
+      )
     }
   }
   render () {
