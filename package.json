@@ -54,6 +54,12 @@
     "preset": "jest-expo",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "transformIgnorePatterns" : ["<rootDir>/node_modules/(?!react-native-paper|react-native|expo-react-native-adapter|expo|react-navigation-material-bottom-tabs|react-navigation)"],
+    "moduleNameMapper": {
+      "styled-components": "<rootDir>/node_modules/styled-components/dist/styled-components.native.cjs.js",
+      "react-native-paper": "<rootDir>/node_modules/react-native-paper",
+      "react-navigation-material-bottom-tabs": "<rootDir>/node_modules/react-navigation-material-bottom-tabs"
+    }
   }
 }
