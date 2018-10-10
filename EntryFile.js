@@ -8,4 +8,3 @@ if (__DEV__) {
 }
 
 registerRootComponent(FrontDisplayWrapper)
-

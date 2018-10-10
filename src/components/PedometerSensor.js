@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { Pedometer } from 'expo'
 import styled from 'styled-components'
-import { Asset, Font } from 'expo'
+import PropTypes from 'prop-types'
 
 const StyledView = styled.View`
   flex: 1;
@@ -50,7 +50,7 @@ export default class PedometerSensor extends Component {
         })
       }
     )
-    
+
     // Gets past step count from previous day
     const end = new Date()
     const start = new Date()
@@ -75,8 +75,12 @@ export default class PedometerSensor extends Component {
     return (
       <StyledView>
         {console.log(this.state.isPedometerAvailable)}
-        <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
+        <Text style={this.props.customStyle}>Walk! And watch this go up: {this.state.currentStepCount}</Text>
       </StyledView>
     )
   }
+}
+
+PedometerSensor.propTypes = {
+  customStyle: PropTypes.object
 }

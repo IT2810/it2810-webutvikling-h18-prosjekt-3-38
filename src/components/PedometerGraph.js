@@ -1,6 +1,41 @@
 import React, { Component } from 'react'
-import { VictoryChart, VictoryLine, VictoryTheme } from 'victory-native'
+import { VictoryChart, VictoryLine } from 'victory-native'
 import { Pedometer } from 'expo'
+import { View, TextInput } from 'react-native'
+import styled from 'styled-components'
+
+const StyledBox = styled.View`
+  flex: 1; 
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+`
+const GraphView = styled.View`
+  flex: 0.7; 
+  flex-direction:column;
+  align-items: center;
+  justify-content:center;
+  padding-left: 6%;
+  top: 0;
+`
+
+const StyledInputText = styled.TextInput`
+  background-color: #247ba0;
+  font-family: 'Roboto-Medium';
+  color: white;
+  top: 30;
+  font-size: 15;
+  border-color: #01364c;
+  border-width: 2;
+  border-radius: 20;
+  width: 250;
+  text-align: center;
+  flex: 0.1; 
+  flex-direction:column;
+  background-color:#01364c;
+  align-items: center;
+  justify-content:center;
+`
 
 export default class PedometerGraph extends Component {
   constructor () {
@@ -8,7 +43,8 @@ export default class PedometerGraph extends Component {
     this.getData()
   }
   state = {
-    stepData: []
+    stepData: [],
+    motivationData: []
   }
   weekday = ['Sun', 'Mon', 'Tus', 'Wed', 'Thu', 'Fri', 'Sat']
   /*
@@ -39,71 +75,89 @@ export default class PedometerGraph extends Component {
   componentDidUpdate (prevProps, prevState) {
     if (prevState.stepData.length !== this.state.stepData.length) {
       this.forceUpdate()
+    } else if (prevState.motivationData.length !== this.state.motivationData.length) {
+      this.forceUpdate()
     }
+  }
+  retLineChart (dataSet, strokeColor, key = 0) {
+    return (
+      <VictoryLine
+        animate={{
+          duration: 1000,
+          onLoad: { duration: 1000 }
+        }}
+        style={{
+          data: { stroke: strokeColor },
+          labels: { fill: '#fff', stroke: '#fff' }
+        }}
+        data={dataSet}
+        interpolation="linear"
+        key={key}
+      />
+    )
   }
   // Renders component based on current day of the week and available data
   dateCheck () {
     let currentDay = new Date().getDay()
+    console.log(this.state.motivationData)
     /*
-      Checks array stepData length because of bug in the victory chart library
+      Checks data array length because of bug in the victory chart library
       which throws an exception whe trying to render a line chart with only one
       data point.
     */
-    if (currentDay > 1 && this.state.stepData.length > 1) {
+    if (currentDay > 1 && this.state.stepData.length > 1 && this.state.motivationData.length > 1) {
+      // Render pedometer line chart and goal line chart
       return (
-        // Render line chart with correct data
-        <VictoryChart
-          minDomain={{ x: 1, y: 0 }}
-          style={{
-            parent: { border: "1px solid #fff" },
-            labels: { stroke: '#fff', fontSize: 20 }
-          }}
-        >
-          <VictoryLine
-            animate={{
-              duration: 2000,
-              onLoad: { duration: 2000 }
-            }}
-            style={{
-              data: { stroke: '#c43a31' },
-              labels: { fill : '#fff', stroke: '#fff' },
-              parent: { border: '1px solid #fff' }
-            }}
-            data={this.state.stepData}
-            interpolation="natural"
-          />
-        </VictoryChart>
+        [
+          this.retLineChart(this.state.stepData, '#c43a31'),
+          this.retLineChart(this.state.motivationData, '#32CD32', 1)
+        ])
+    } else if (currentDay > 1 && this.state.stepData.length > 1) {
+      // Render pedometer line chart
+      return this.retLineChart(this.state.stepData, '#c43a31')
+    } else if (this.state.motivationData.length > 1) {
+      // Or we render line chart with dummy data and motivation data
+      return (
+        [
+          this.retLineChart([{ x: 'Sun', y: 2545 }, { x: 'Mon', y: 1100 }], '#c43a31'),
+          this.retLineChart(this.state.motivationData, '#32CD32', 1)
+        ]
       )
     } else {
-      // Or else we render line chart with dummy data
-      return (
-        <VictoryChart
-          minDomain={{ x: 1, y: 900 }}
-          maxDomain={{ x: 7, y: 6000 }}
-          style={{
-            labels: { stroke: '#fff', fontSize: 20 }
-          }}
-        >
-          <VictoryLine
-            animate={{
-              duration: 2000,
-              onLoad: { duration: 2000 }
-            }}
-            style={{
-              data: { stroke: '#c43a31' },
-              labels: { fill : '#fff', stroke: '#fff' },
-              parent: { border: '1px solid #fff' }
-            }}
-            data={[
-              { x: 'Sun', y: 2545 },
-              { x: 'Mon', y: 1100 }
-            ]}
-          />
-        </VictoryChart>
-      )
+      // Or else we render line chart with only dummy data
+      return this.retLineChart([{ x: 'Sun', y: 2545 }, { x: 'Mon', y: 1100 }], '#c43a31')
     }
   }
+  memes () {
+    return ([this.retLineChart([{ x: 'Sun', y: 2545 }, { x: 'Mon', y: 1100 }], '#c43a31'),
+      this.retLineChart([{ x: 'Sun', y: 2000 }, { x: 'Mon', y: 2000 }], '#32CD32', 1)])
+  }
+  // Handles input event
+  handleInput (event) {
+    const { text } = event.nativeEvent
+    const data = this.state.stepData.map(obj => ({ x: obj.x, y: parseInt(text) }))
+    this.setState({ motivationData: data })
+  }
   render () {
-    return this.dateCheck()
+    return (
+      <StyledBox>
+        <GraphView >
+          <VictoryChart
+            style={{ labels: { stroke: '#fff', fontSize: 20 } }}
+          >
+            {this.dateCheck()}
+          </VictoryChart>
+        </GraphView>
+        <StyledInputText
+          onChange={(event) => this.handleInput(event)}
+          returnKeyType='send'
+          placeholder='Enter goal here'
+          clearTextOnFocus={true}
+          keyboardType='numeric'
+          maxLength = {5}
+          defaultValue=''
+        />
+      </StyledBox>
+    )
   }
 }

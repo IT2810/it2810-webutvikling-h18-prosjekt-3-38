@@ -1,8 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import styled from 'styled-components'
-import SvgLogo from './SvgLogo'
-import { Asset, Font } from 'expo'
+import { Font } from 'expo'
 import PedometerGraph from './PedometerGraph'
 
 const StyledBox = styled.View`
@@ -11,14 +10,23 @@ const StyledBox = styled.View`
   background-color:#01364c;
 `
 const StyledViewTop = styled.View`
-  flex: 0.5; 
+  flex: 0.2; 
   flex-direction:column;
   background-color:#01364c;
   align-items: center;
   justify-content:center;
 `
 const StyledViewTwo = styled.View`
-  flex: 1; 
+  flex: 0.8; 
+  align-items: center;
+  flex-direction:column;
+  background-color:#247BA0;
+  align-items: center;
+  justify-content:center;
+`
+
+const StyledViewThree = styled.View`
+  flex: 0.6; 
   align-items: center;
   flex-direction:column;
   background-color:#247BA0;
@@ -26,13 +34,12 @@ const StyledViewTwo = styled.View`
   justify-content:center;
   padding-left: 6%;
 `
-const StyledViewThree = styled.View`
-  flex: 0.3; 
-  align-items: center;
-  flex-direction:column;
-  align-items: center;
-  justify-content:center;
-  background-color:#247BA0;
+
+const Title = styled.Text`
+  font-family: 'Roboto-Medium';
+  color: white;
+  font-size: 25;
+  top: 7;
 `
 
 export default class GraphTabDisplayFlexBox extends React.Component {
@@ -40,7 +47,6 @@ export default class GraphTabDisplayFlexBox extends React.Component {
     super(props)
     this.state = {
       fontLoaded: false
-
     }
   }
   async componentDidMount () {
@@ -54,25 +60,16 @@ export default class GraphTabDisplayFlexBox extends React.Component {
     return (
       <StyledBox>
         <StyledViewTop>
-          <SvgLogo />
-        </StyledViewTop>
-        <StyledViewTwo>
-          <PedometerGraph />
-        </StyledViewTwo>
-        <StyledViewThree>
           <View>
-            {this.state.fontLoaded == true ? (
-              <Text style={{
-                backgroundColor: '#247BA0',
-                fontFamily: 'Roboto-Medium',
-                color: 'white',
-                bottom: 20,
-                fontSize: 25
-              }}>STEPS WALKED THIS WEEK</Text>)
+            {this.state.fontLoaded === true ? (
+              <Title>Steps taken this week</Title>)
               : <Text>Loading...</Text>}
           </View>
-          <Text></Text>
-        </StyledViewThree>
+        </StyledViewTop>
+        <StyledViewTwo>
+          <PedometerGraph/>
+        </StyledViewTwo>
+        <StyledViewThree/>
       </StyledBox>
     )
   }
