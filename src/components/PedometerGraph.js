@@ -53,9 +53,11 @@ export default class PedometerGraph extends Component {
       return (
         // Render line chart with correct data
         <VictoryChart
-          theme={VictoryTheme.material}
-          minDomain={{ x: 1, y: 1000 }}
-          maxDomain={{ x: 7, y: 6000 }}
+          minDomain={{ x: 1, y: 0 }}
+          style={{
+            parent: { border: "1px solid #fff" },
+            labels: { stroke: '#fff', fontSize: 20 }
+          }}
         >
           <VictoryLine
             animate={{
@@ -64,7 +66,8 @@ export default class PedometerGraph extends Component {
             }}
             style={{
               data: { stroke: '#c43a31' },
-              parent: { border: '1px solid #ccc' }
+              labels: { fill : '#fff', stroke: '#fff' },
+              parent: { border: '1px solid #fff' }
             }}
             data={this.state.stepData}
             interpolation="natural"
@@ -75,9 +78,11 @@ export default class PedometerGraph extends Component {
       // Or else we render line chart with dummy data
       return (
         <VictoryChart
-          theme={VictoryTheme.material}
           minDomain={{ x: 1, y: 900 }}
           maxDomain={{ x: 7, y: 6000 }}
+          style={{
+            labels: { stroke: '#fff', fontSize: 20 }
+          }}
         >
           <VictoryLine
             animate={{
@@ -86,7 +91,8 @@ export default class PedometerGraph extends Component {
             }}
             style={{
               data: { stroke: '#c43a31' },
-              parent: { border: '1px solid #ccc' }
+              labels: { fill : '#fff', stroke: '#fff' },
+              parent: { border: '1px solid #fff' }
             }}
             data={[
               { x: 'Sun', y: 2545 },

@@ -3,6 +3,7 @@ import { Text, View } from 'react-native'
 import styled from 'styled-components'
 import SvgLogo from './SvgLogo'
 import { Asset, Font } from 'expo'
+import PedometerGraph from './PedometerGraph'
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -23,9 +24,10 @@ const StyledViewTwo = styled.View`
   background-color:#247BA0;
   align-items: center;
   justify-content:center;
+  padding-left: 6%;
 `
 const StyledViewThree = styled.View`
-  flex: 0.75; 
+  flex: 0.3; 
   align-items: center;
   flex-direction:column;
   align-items: center;
@@ -55,7 +57,7 @@ export default class GraphTabDisplayFlexBox extends React.Component {
           <SvgLogo />
         </StyledViewTop>
         <StyledViewTwo>
-          <Text>Graph goes here</Text>
+          <PedometerGraph />
         </StyledViewTwo>
         <StyledViewThree>
           <View>

@@ -75,9 +75,6 @@ export default class PedometerSensor extends Component {
     return (
       <StyledView>
         {console.log(this.state.isPedometerAvailable)}
-        <Text>
-            Steps taken in the last 24 hours: {this.state.pastStepCount}
-        </Text>
         <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
       </StyledView>
     )
