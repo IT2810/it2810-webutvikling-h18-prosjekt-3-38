@@ -1,6 +1,6 @@
-import React from 'react'
-import { Pedometer } from 'expo'
+import React, { Component } from 'react'
 import { Text, View } from 'react-native'
+import { Pedometer } from 'expo'
 import styled from 'styled-components'
 import { Asset, Font } from 'expo'
 
@@ -11,36 +11,33 @@ const StyledView = styled.View`
   justify-content: center;
 `
 
-export default class PedometerSensor extends React.Component {
+export default class PedometerSensor extends Component {
   state = {
     isPedometerAvailable: 'checking',
     pastStepCount: 0,
-    currentStepCount: 0,
-    fontLoaded: false
-
+    currentStepCount: 0
   }
 
-  async componentDidMount () {
+  // Subscribes when component is mounted
+  componentDidMount () {
     this._subscribe()
-
-    await Font.loadAsync({
-      'Roboto-Medium': require('../../assets/fonts/Roboto-Bold.ttf')
-    }).then(() => {
-      this.setState({ fontLoaded: true })
-    })
   }
 
+  // Unsubscribes when component is unmounted
   componentWillUnmount () {
     this._unsubscribe()
   }
 
+  // Makes all the expo api calls to retrieve pedometer data
   _subscribe = () => {
+    // Gets live feed of current step count and changes state
     this._subscription = Pedometer.watchStepCount(result => {
       this.setState({
         currentStepCount: result.steps
       })
     })
 
+    // Checks if the pedometer is available
     Pedometer.isAvailableAsync().then(
       result => {
         this.setState({
@@ -53,7 +50,8 @@ export default class PedometerSensor extends React.Component {
         })
       }
     )
-
+    
+    // Gets past step count from previous day
     const end = new Date()
     const start = new Date()
     start.setDate(end.getDate() - 1)
@@ -73,20 +71,14 @@ export default class PedometerSensor extends React.Component {
     this._subscription && this._subscription.remove()
     this._subscription = null
   }
-
   render () {
     return (
       <StyledView>
-        <View>
-          {this.state.fontLoaded == true ? (<Text style={{ backgroundColor: '#01364c', fontFamily: 'Roboto-Medium', bottom: 20, fontSize: 20, color: 'white' }}>Walk! And watch this go up:</Text>)
-            : <Text>Loading...</Text>}
-        </View>
-        <View>
-          {this.state.fontLoaded == true ? (<Text style={{ backgroundColor: '#01364c', fontFamily: 'Roboto-Medium', bottom: 20, fontSize: 20, color: 'white' }}>
-            <Text style={{fontSize: 50}}>{ this.state.currentStepCount}</Text>
-          </Text>)
-            : <Text>Loading...</Text>}
-        </View>
+        {console.log(this.state.isPedometerAvailable)}
+        <Text>
+            Steps taken in the last 24 hours: {this.state.pastStepCount}
+        </Text>
+        <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
       </StyledView>
     )
   }
