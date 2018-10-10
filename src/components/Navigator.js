@@ -37,7 +37,7 @@ const Navigator = createMaterialBottomTabNavigator({
       tabBarLabel: 'Graph',
       tabBarIcon: GraphIcon,
       barStyle: {
-        backgroundColor: '#5fa55a'
+        backgroundColor: '#247BA0'
       }
     }
   }
