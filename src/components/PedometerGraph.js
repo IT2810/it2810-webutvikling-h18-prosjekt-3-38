@@ -11,6 +11,11 @@ export default class PedometerGraph extends Component {
     stepData: []
   }
   weekday = ['Sun', 'Mon', 'Tus', 'Wed', 'Thu', 'Fri', 'Sat']
+  /*
+    Retrieves data for the current day and previous days.
+    The first day of the week is Sunday and it will only display data
+    for the current week.
+  */
   async getData () {
     var start = new Date()
     var end = new Date()
@@ -20,11 +25,13 @@ export default class PedometerGraph extends Component {
       this.setState({
         stepData: this.state.stepData.concat({
           x: this.weekday[x],
+          // Retrieve pedometer data with the expo pedometer api
           y: await Pedometer.getStepCountAsync(start, end).then(result => {
             return result.steps
           })
         })
       }, () => {
+        // Forces component to rerender when the state is updated
         this.forceUpdate()
       })
     }
@@ -34,10 +41,17 @@ export default class PedometerGraph extends Component {
       this.forceUpdate()
     }
   }
+  // Renders component based on current day of the week and available data
   dateCheck () {
     let currentDay = new Date().getDay()
+    /*
+      Checks array stepData length because of bug in the victory chart library
+      which throws an exception whe trying to render a line chart with only one
+      data point.
+    */
     if (currentDay > 1 && this.state.stepData.length > 1) {
       return (
+        // Render line chart with correct data
         <VictoryChart
           theme={VictoryTheme.material}
           minDomain={{ x: 1, y: 1000 }}
@@ -58,6 +72,7 @@ export default class PedometerGraph extends Component {
         </VictoryChart>
       )
     } else {
+      // Or else we render line chart with dummy data
       return (
         <VictoryChart
           theme={VictoryTheme.material}

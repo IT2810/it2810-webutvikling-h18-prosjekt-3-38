@@ -17,21 +17,26 @@ export default class PedometerSensor extends Component {
     currentStepCount: 0
   }
 
+  // Subscribes when component is mounted
   componentDidMount () {
     this._subscribe()
   }
 
+  // Unsubscribes when component is unmounted
   componentWillUnmount () {
     this._unsubscribe()
   }
 
+  // Makes all the expo api calls to retrieve pedometer data
   _subscribe = () => {
+    // Gets live feed of current step count and changes state
     this._subscription = Pedometer.watchStepCount(result => {
       this.setState({
         currentStepCount: result.steps
       })
     })
 
+    // Checks if the pedometer is available
     Pedometer.isAvailableAsync().then(
       result => {
         this.setState({
@@ -44,7 +49,8 @@ export default class PedometerSensor extends Component {
         })
       }
     )
-
+    
+    // Gets past step count from previous day
     const end = new Date()
     const start = new Date()
     start.setDate(end.getDate() - 1)

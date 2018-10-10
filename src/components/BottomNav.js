@@ -13,7 +13,7 @@ class BottomNav extends Component {
         return (
             <BottomNavigation active={this.state.active}>
                 <BottomNavigation.Action
-                    key="home"
+                    bkey="home"
                     icon="home"
                     label="Home"
                     onPress={() => this.setState({ active: 'home' })}
