@@ -4,6 +4,7 @@ import { StyleSheet, View, TouchableHighlight, AsyncStorage } from 'react-native
 import styled from 'styled-components'
 import { Entypo } from '@expo/vector-icons'
 
+// Styled CSS from styled components
 const StyledButtonBox = styled.View`
   flex: 1; 
   align-items: center;
@@ -11,9 +12,10 @@ const StyledButtonBox = styled.View`
   justify-content:center;
   align-Items: center;
 `
-
+// The class containing the states for each emoji icon.
+// If an icon is true, coloured styling will be applied to it, so that it is renderen with color.
 export default class ButtonView extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.fetchData()
     this.state = {
@@ -25,17 +27,15 @@ export default class ButtonView extends React.Component {
     }
     this.onPress = this.onPress.bind(this)
   }
-  // Fires before the render method!
-  //   this.displayData();
-  // }
-  fireMultiple (e) {
+  // Function is fired when an icon is pressed. e is for example "emojiHappy.
+  fireMultiple(e) {
     this.onPress(e)
   }
 
   // Needs to be called after each state-change, after onPress has been called.
   // Needs to save the name of the emoji that is set to true, with the date as the key!
   // https://medium.com/@richardzhanguw/storing-and-retrieving-objects-using-asyncstorage-in-react-native-6bb1745fdcdd
-  saveData () {
+  saveData() {
     // gets todays date
     var today = new Date()
     let dateKey = today.getDate() + '/' + parseInt(today.getMonth() + 1) + '/' + today.getFullYear()
@@ -52,10 +52,9 @@ export default class ButtonView extends React.Component {
       } else {
         AsyncStorage.setItem(dateKey, '')
       }
-      // this.fetchData(dateKey)
     })
   }
-  // Need to fire this method when the application opens!!!!
+  // This method is fired in the constructor upon opening the app.
   fetchData = async () => {
     var today = new Date()
     let todayKey = today.getDate() + '/' + parseInt(today.getMonth() + 1) + '/' + today.getFullYear()
@@ -67,7 +66,8 @@ export default class ButtonView extends React.Component {
     } catch (error) {
     }
   }
-  matchEmojiToString (e) {
+  // This function matches the pressed icon and updates the state accordingly.
+  matchEmojiToString(e) {
     switch (e) {
       case 'emojiHappy':
         if (!this.state.emojiHappy) { // hvis den er false-> Sett den til true og sett alle
@@ -123,13 +123,14 @@ export default class ButtonView extends React.Component {
         break
     }
   }
+  // Calls the matching function which updates the state.
   onPress = (e) => {
     this.matchEmojiToString(e)
 
     // The states are saved!
   }
   // https://facebook.github.io/react-native/docs/touchablehighlight.html
-  render () {
+  render() {
     return (
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <StyledButtonBox style={{ backgroundColor: this.state.backGround }}>

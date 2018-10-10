@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { Pedometer } from 'expo'
 import styled from 'styled-components'
+import { Asset, Font } from 'expo'
 
 const StyledView = styled.View`
   flex: 1;

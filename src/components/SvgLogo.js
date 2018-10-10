@@ -1,11 +1,13 @@
 import React from 'react'
 import { View, Animated } from 'react-native'
 
+// Inspiration from https://www.youtube.com/watch?v=vzPmI0GCDPM
 class ImageLoader extends React.Component {
   state = {
     opacity: new Animated.Value(0)
   }
 
+  // The useNativeDriver means that the animation happens off the JS thread
   onLoad = () => {
     Animated.timing(this.state.opacity, {
       toValue: 1,
@@ -13,6 +15,9 @@ class ImageLoader extends React.Component {
       useNativeDriver: true
     }).start()
   }
+
+  // Returns the animated image. ... is the spread operator, which in turn "sends" the props from the
+  // SvgLogo to ImageLoader.
   render () {
     return (
       <Animated.Image
