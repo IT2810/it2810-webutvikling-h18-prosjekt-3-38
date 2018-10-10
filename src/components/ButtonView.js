@@ -4,6 +4,7 @@ import { StyleSheet, View, TouchableHighlight, AsyncStorage } from 'react-native
 import styled from 'styled-components'
 import { Entypo } from '@expo/vector-icons'
 
+//Styled CSS from styled components
 const StyledButtonBox = styled.View`
   flex: 1; 
   align-items: center;
@@ -11,7 +12,8 @@ const StyledButtonBox = styled.View`
   justify-content:center;
   align-Items: center;
 `
-
+// The class containing the states for each emoji icon.
+// If an icon is true, coloured styling will be applied to it, so that it is renderen with color.
 export default class ButtonView extends React.Component {
   constructor (props) {
     super(props)
@@ -25,9 +27,7 @@ export default class ButtonView extends React.Component {
     }
     this.onPress = this.onPress.bind(this)
   }
-  // Fires before the render method!
-  //   this.displayData();
-  // }
+  //Function is fired when an icon is pressed. e is for example "emojiHappy.
   fireMultiple (e) {
     this.onPress(e)
   }

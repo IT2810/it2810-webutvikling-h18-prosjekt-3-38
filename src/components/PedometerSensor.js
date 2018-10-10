@@ -1,8 +1,8 @@
 import React from 'react'
-import Expo from 'expo'
 import { Pedometer } from 'expo'
 import { Text, View } from 'react-native'
 import styled from 'styled-components'
+import { Asset, Font } from 'expo'
 
 const StyledView = styled.View`
   flex: 1;
@@ -15,11 +15,19 @@ export default class PedometerSensor extends React.Component {
   state = {
     isPedometerAvailable: 'checking',
     pastStepCount: 0,
-    currentStepCount: 0
+    currentStepCount: 0,
+    fontLoaded: false
+
   }
 
-  componentDidMount () {
+  async componentDidMount () {
     this._subscribe()
+
+    await Font.loadAsync({
+      'Roboto-Medium': require('../../assets/fonts/Roboto-Bold.ttf')
+    }).then(() => {
+      this.setState({ fontLoaded: true })
+    })
   }
 
   componentWillUnmount () {
@@ -69,10 +77,16 @@ export default class PedometerSensor extends React.Component {
   render () {
     return (
       <StyledView>
-        <Text>
-          Steps today:
-        </Text>
-        <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
+        <View>
+          {this.state.fontLoaded == true ? (<Text style={{ backgroundColor: '#01364c', fontFamily: 'Roboto-Medium', bottom: 20, fontSize: 20, color: 'white' }}>Walk! And watch this go up:</Text>)
+            : <Text>Loading...</Text>}
+        </View>
+        <View>
+          {this.state.fontLoaded == true ? (<Text style={{ backgroundColor: '#01364c', fontFamily: 'Roboto-Medium', bottom: 20, fontSize: 20, color: 'white' }}>
+            <Text style={{fontSize: 50}}>{ this.state.currentStepCount}</Text>
+          </Text>)
+            : <Text>Loading...</Text>}
+        </View>
       </StyledView>
     )
   }
