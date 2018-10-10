@@ -12,19 +12,19 @@ const StyledView = styled.View`
 `
 
 export default class PedometerSensor extends React.Component {
-    state = {
-      isPedometerAvailable: 'checking',
-      pastStepCount: 0,
-      currentStepCount: 0
-    }
+  state = {
+    isPedometerAvailable: 'checking',
+    pastStepCount: 0,
+    currentStepCount: 0
+  }
 
-    componentDidMount () {
-      this._subscribe()
-    }
+  componentDidMount () {
+    this._subscribe()
+  }
 
-    componentWillUnmount () {
-      this._unsubscribe()
-    }
+  componentWillUnmount () {
+    this._unsubscribe()
+  }
 
   _subscribe = () => {
     this._subscription = Pedometer.watchStepCount(result => {
@@ -69,9 +69,8 @@ export default class PedometerSensor extends React.Component {
   render () {
     return (
       <StyledView>
-        {console.log(this.state.isPedometerAvailable)}
         <Text>
-          Steps taken in the last 24 hours: {this.state.pastStepCount}
+          Steps today:
         </Text>
         <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
       </StyledView>

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import ButtonView from './ButtonView'
 import SvgLogo from './SvgLogo'
 import { Asset, Font } from 'expo'
+import PedometerSensor from './PedometerSensor'
 
 const StyledBox = styled.View`
   flex: 1; 
@@ -35,20 +36,20 @@ const StyledViewThree = styled.View`
 `
 
 export default class FrontDisplayFlexBox extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       fontLoaded: false
     }
   }
-  async componentDidMount () {
+  async componentDidMount() {
     await Font.loadAsync({
       'Roboto-Medium': require('../../assets/fonts/Roboto-Bold.ttf')
     }).then(() => {
       this.setState({ fontLoaded: true })
     })
   }
-  render () {
+  render() {
     return (
       <StyledBox>
         <StyledViewTop>
@@ -66,7 +67,9 @@ export default class FrontDisplayFlexBox extends React.Component {
         <StyledViewThree>
           <View>
             {this.state.fontLoaded == true ? (
-              <Text style={{ alignSelf: 'center', fontFamily: 'Roboto-Medium', fontSize: 20, color: 'white' }}>STEPS TODAY:</Text>) : <Text>Loading...</Text>}
+              <Text style={{ top: 20, alignSelf: 'center', fontFamily: 'Roboto-Medium', fontSize: 20, color: 'white' }}>STEPS TODAY:</Text>) : <Text>Loading...</Text>}
+            <PedometerSensor />
+
           </View>
         </StyledViewThree>
       </StyledBox >
