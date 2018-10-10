@@ -34,24 +34,24 @@ const StyledViewThree = styled.View`
   justify-content:center;
   background-color:#01364c;
 `
-//This class renders the first page that shows up when you start the application.
+// This class renders the first page that shows up when you start the application.
 export default class FrontDisplayFlexBox extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       fontLoaded: false
     }
   }
-  //Method from async storage that loads the font. If the font is not loaded, it won't show up in the app.
+  // Method from async storage that loads the font. If the font is not loaded, it won't show up in the app.
   // The logic in the return-section takes care of that. The font that is going to be loaded is in the assets folder.
-  async componentDidMount() {
+  async componentDidMount () {
     await Font.loadAsync({
       'Roboto-Medium': require('../../assets/fonts/Roboto-Bold.ttf')
     }).then(() => {
       this.setState({ fontLoaded: true })
     })
   }
-  render() {
+  render () {
     return (
       <StyledBox>
         <StyledViewTop>
