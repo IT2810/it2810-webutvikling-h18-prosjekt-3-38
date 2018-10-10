@@ -4,7 +4,7 @@ import { StyleSheet, View, TouchableHighlight, AsyncStorage } from 'react-native
 import styled from 'styled-components'
 import { Entypo } from '@expo/vector-icons'
 
-//Styled CSS from styled components
+// Styled CSS from styled components
 const StyledButtonBox = styled.View`
   flex: 1; 
   align-items: center;
@@ -27,7 +27,7 @@ export default class ButtonView extends React.Component {
     }
     this.onPress = this.onPress.bind(this)
   }
-  //Function is fired when an icon is pressed. e is for example "emojiHappy.
+  // Function is fired when an icon is pressed. e is for example "emojiHappy.
   fireMultiple (e) {
     this.onPress(e)
   }
@@ -52,10 +52,9 @@ export default class ButtonView extends React.Component {
       } else {
         AsyncStorage.setItem(dateKey, '')
       }
-      // this.fetchData(dateKey)
     })
   }
-  // Need to fire this method when the application opens!!!!
+  // This method is fired in the constructor upon opening the app.
   fetchData = async () => {
     var today = new Date()
     let todayKey = today.getDate() + '/' + parseInt(today.getMonth() + 1) + '/' + today.getFullYear()
@@ -67,6 +66,7 @@ export default class ButtonView extends React.Component {
     } catch (error) {
     }
   }
+  // This function matches the pressed icon and updates the state accordingly.
   matchEmojiToString (e) {
     switch (e) {
       case 'emojiHappy':
@@ -123,6 +123,7 @@ export default class ButtonView extends React.Component {
         break
     }
   }
+  // Calls the matching function which updates the state.
   onPress = (e) => {
     this.matchEmojiToString(e)
 
