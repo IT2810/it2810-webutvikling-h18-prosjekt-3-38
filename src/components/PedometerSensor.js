@@ -1,7 +1,6 @@
-import React from 'react'
-import Expo from 'expo'
-import { Pedometer } from 'expo'
+import React, { Component } from 'react'
 import { Text, View } from 'react-native'
+import { Pedometer } from 'expo'
 import styled from 'styled-components'
 
 const StyledView = styled.View`
@@ -11,28 +10,33 @@ const StyledView = styled.View`
   justify-content: center;
 `
 
-export default class PedometerSensor extends React.Component {
-    state = {
-      isPedometerAvailable: 'checking',
-      pastStepCount: 0,
-      currentStepCount: 0
-    }
+export default class PedometerSensor extends Component {
+  state = {
+    isPedometerAvailable: 'checking',
+    pastStepCount: 0,
+    currentStepCount: 0
+  }
 
-    componentDidMount () {
-      this._subscribe()
-    }
+  // Subscribes when component is mounted
+  componentDidMount () {
+    this._subscribe()
+  }
 
-    componentWillUnmount () {
-      this._unsubscribe()
-    }
+  // Unsubscribes when component is unmounted
+  componentWillUnmount () {
+    this._unsubscribe()
+  }
 
+  // Makes all the expo api calls to retrieve pedometer data
   _subscribe = () => {
+    // Gets live feed of current step count and changes state
     this._subscription = Pedometer.watchStepCount(result => {
       this.setState({
         currentStepCount: result.steps
       })
     })
 
+    // Checks if the pedometer is available
     Pedometer.isAvailableAsync().then(
       result => {
         this.setState({
@@ -45,7 +49,8 @@ export default class PedometerSensor extends React.Component {
         })
       }
     )
-
+    
+    // Gets past step count from previous day
     const end = new Date()
     const start = new Date()
     start.setDate(end.getDate() - 1)
@@ -65,13 +70,12 @@ export default class PedometerSensor extends React.Component {
     this._subscription && this._subscription.remove()
     this._subscription = null
   }
-
   render () {
     return (
       <StyledView>
         {console.log(this.state.isPedometerAvailable)}
         <Text>
-          Steps taken in the last 24 hours: {this.state.pastStepCount}
+            Steps taken in the last 24 hours: {this.state.pastStepCount}
         </Text>
         <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
       </StyledView>
