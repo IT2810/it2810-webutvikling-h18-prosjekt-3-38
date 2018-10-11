@@ -56,7 +56,7 @@
       "enzyme-to-json/serializer"
     ],
     "transformIgnorePatterns": [
-      "<rootDir>/node_modules/(?!victory|react-native-svg|react-native|expo-react-native-adapter|expo)"
+      "<rootDir>/node_modules/(?!victory|react-native-svg|react-native|expo-react-native-adapter|expo|@expo/vector-icons|prop-types)"
     ],
     "moduleNameMapper": {
       "styled-components": "<rootDir>/node_modules/styled-components/dist/styled-components.native.cjs.js"
