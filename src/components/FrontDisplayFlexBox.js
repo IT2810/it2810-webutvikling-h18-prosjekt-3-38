@@ -14,7 +14,7 @@ const StyledBox = styled.View`
 const StyledViewTop = styled.View`
   flex: 1; 
   flex-direction:column;
-  background-color:#01364c;
+  background-color:#00263A;
   align-items: center;
   justify-content:center;
 `

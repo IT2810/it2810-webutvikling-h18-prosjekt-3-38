@@ -58,7 +58,7 @@ exports[`renders correctly 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#70C1B3",
+          "backgroundColor": "#247BA0",
           "flexBasis": 0,
           "flexDirection": "column",
           "flexGrow": 1,
@@ -183,13 +183,22 @@ exports[`renders correctly 1`] = `
         </View>
       </View>
     </View>
+    <View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      >
+        Loading...
+      </Text>
+    </View>
   </View>
   <View
     style={
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#F0F3BD",
+          "backgroundColor": "#01364c",
           "flexBasis": 0,
           "flexDirection": "column",
           "flexGrow": 1,
@@ -200,13 +209,47 @@ exports[`renders correctly 1`] = `
       ]
     }
   >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-    >
-      HELOOO
-    </Text>
+    <View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      >
+        Loading...
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "marginTop": 15,
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Steps taken in the last 24 hours: 
+          0
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Walk! And watch this go up: 
+          0
+        </Text>
+      </View>
+    </View>
   </View>
 </View>
 `;
