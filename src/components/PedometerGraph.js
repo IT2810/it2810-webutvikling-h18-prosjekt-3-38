@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { VictoryChart, VictoryLine } from 'victory-native'
 import { Pedometer } from 'expo'
-import { View, TextInput } from 'react-native'
+import { View, TextInput, AsyncStorage } from 'react-native'
 import styled from 'styled-components'
 
 const StyledBox = styled.View`
@@ -39,6 +39,7 @@ export default class PedometerGraph extends Component {
   constructor () {
     super()
     this.getData()
+    this._retrieveMotivationData()
   }
   state = {
     stepData: [],
@@ -68,6 +69,18 @@ export default class PedometerGraph extends Component {
         // Forces component to rerender when the state is updated
         this.forceUpdate()
       })
+    }
+  }
+  // Retrieves motivation data from async storage and loads it into state to draw the goal graph
+  _retrieveMotivationData = async () => {
+    try {
+      const value = JSON.parse(await AsyncStorage.getItem('motivationData'))
+      // Only set state if async store is empty
+      if (value) {
+        this.setState({ motivationData: value })
+      }
+    } catch (error) {
+      console.log('Error: ', error)
     }
   }
   componentDidUpdate (prevProps, prevState) {
@@ -136,7 +149,15 @@ export default class PedometerGraph extends Component {
     if (text !== '') {
       data = this.state.stepData.map(obj => ({ x: obj.x, y: parseInt(text) }))
     }
-    this.setState({ motivationData: data })
+    this.setState({ motivationData: data }, async () => {
+      try {
+        if (this.state.motivationData.length > 0) {
+          await AsyncStorage.setItem('motivationData', JSON.stringify(this.state.motivationData))
+        }
+      } catch (error) {
+        console.log('Error: ', error)
+      }
+    })
   }
   render () {
     return (

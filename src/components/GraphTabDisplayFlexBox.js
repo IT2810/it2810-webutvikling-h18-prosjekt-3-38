@@ -48,7 +48,7 @@ export default class GraphTabDisplayFlexBox extends React.Component {
   }
   render () {
     return (
-      <KeyboardAvoidingView style={{ flex: 1 }}behavior="padding" enabled>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <StyledBox>
             <StyledViewTop>
