@@ -16,18 +16,16 @@ const GraphView = styled.View`
   align-items: center;
   justify-content:center;
   padding-left: 6%;
-  top: 0;
+  top: -20;
 `
 
 const StyledInputText = styled.TextInput`
   background-color: #247ba0;
   font-family: 'Roboto-Medium';
   color: white;
-  top: 30;
   font-size: 15;
-  border-color: #01364c;
-  border-width: 2;
   border-radius: 20;
+  bottom: -20;
   width: 250;
   text-align: center;
   flex: 0.1; 
@@ -83,8 +81,8 @@ export default class PedometerGraph extends Component {
     return (
       <VictoryLine
         animate={{
-          duration: 1000,
-          onLoad: { duration: 1000 }
+          duration: 500,
+          onLoad: { duration: 500 }
         }}
         style={{
           data: { stroke: strokeColor },
@@ -99,7 +97,6 @@ export default class PedometerGraph extends Component {
   // Renders component based on current day of the week and available data
   dateCheck () {
     let currentDay = new Date().getDay()
-    console.log(this.state.motivationData)
     /*
       Checks data array length because of bug in the victory chart library
       which throws an exception whe trying to render a line chart with only one
@@ -135,7 +132,10 @@ export default class PedometerGraph extends Component {
   // Handles input event
   handleInput (event) {
     const { text } = event.nativeEvent
-    const data = this.state.stepData.map(obj => ({ x: obj.x, y: parseInt(text) }))
+    let data = []
+    if (text !== '') {
+      data = this.state.stepData.map(obj => ({ x: obj.x, y: parseInt(text) }))
+    }
     this.setState({ motivationData: data })
   }
   render () {
@@ -152,10 +152,12 @@ export default class PedometerGraph extends Component {
           onChange={(event) => this.handleInput(event)}
           returnKeyType='send'
           placeholder='Enter goal here'
+          placeholderTextColor='#fff'
           clearTextOnFocus={true}
           keyboardType='numeric'
           maxLength = {5}
           defaultValue=''
+          underlineColorAndroid='#01364c'
         />
       </StyledBox>
     )

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from 'react-native'
 import styled from 'styled-components'
 import { Font } from 'expo'
 import PedometerGraph from './PedometerGraph'
@@ -17,22 +17,12 @@ const StyledViewTop = styled.View`
   justify-content:center;
 `
 const StyledViewTwo = styled.View`
-  flex: 0.8; 
+  flex: 0.8;
   align-items: center;
   flex-direction:column;
   background-color:#247BA0;
   align-items: center;
   justify-content:center;
-`
-
-const StyledViewThree = styled.View`
-  flex: 0.6; 
-  align-items: center;
-  flex-direction:column;
-  background-color:#247BA0;
-  align-items: center;
-  justify-content:center;
-  padding-left: 6%;
 `
 
 const Title = styled.Text`
@@ -58,19 +48,22 @@ export default class GraphTabDisplayFlexBox extends React.Component {
   }
   render () {
     return (
-      <StyledBox>
-        <StyledViewTop>
-          <View>
-            {this.state.fontLoaded === true ? (
-              <Title>Steps taken this week</Title>)
-              : <Text>Loading...</Text>}
-          </View>
-        </StyledViewTop>
-        <StyledViewTwo>
-          <PedometerGraph/>
-        </StyledViewTwo>
-        <StyledViewThree/>
-      </StyledBox>
+      <KeyboardAvoidingView style={{ flex: 1 }}behavior="padding" enabled>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <StyledBox>
+            <StyledViewTop>
+              <View>
+                {this.state.fontLoaded === true ? (
+                  <Title>Steps taken this week</Title>)
+                  : <Text>Loading...</Text>}
+              </View>
+            </StyledViewTop>
+            <StyledViewTwo>
+              <PedometerGraph/>
+            </StyledViewTwo>
+          </StyledBox>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     )
   }
 }
