@@ -60,7 +60,7 @@ export default class FrontDisplayFlexBox extends React.Component {
         <StyledViewTwo>
           <ButtonView />
           <View>
-            {this.state.fontLoaded == true ? (
+            {this.state.fontLoaded === true ? (
               <Text style={{ backgroundColor: '#247BA0', fontFamily: 'Roboto-Medium', bottom: 20, fontSize: 20, color: 'black' }}>CHOOSE YOUR MOOD</Text>)
               : <Text>Loading...</Text>}
 
@@ -68,9 +68,12 @@ export default class FrontDisplayFlexBox extends React.Component {
         </StyledViewTwo>
         <StyledViewThree>
           <View>
-            {this.state.fontLoaded == true ? (
-              <Text style={{ top: 20, alignSelf: 'center', fontFamily: 'Roboto-Medium', fontSize: 20, color: 'white' }}>STEPS TODAY</Text>) : <Text>Loading...</Text>}
-            <PedometerSensor />
+            {this.state.fontLoaded === true ? (
+              <View>
+                <Text style={{ top: 20, alignSelf: 'center', fontFamily: 'Roboto-Medium', fontSize: 20, color: 'white' }}>STEPS TODAY</Text>
+                <PedometerSensor customStyle={{ top: 5, alignSelf: 'center', fontFamily: 'Roboto-Medium', fontSize: 20, color: 'white' }}/>
+              </View>
+            ) : <Text>Loading...</Text>}
 
           </View>
         </StyledViewThree>
