@@ -63,9 +63,9 @@ export default class PedometerGraph extends Component {
         stepData: this.state.stepData.concat({
           x: this.weekday[x],
           // Retrieve pedometer data with the expo pedometer api
-          y: await Pedometer.getStepCountAsync(start, end).then(result => {
-            return result.steps
-          })
+          y: await Pedometer.getStepCountAsync(start, end)
+            .catch((err) => Promise.reject(console.log('Error occurred:', err)))
+            .then(result => Promise.resolve(result.steps))
         })
       }, () => {
         // Forces component to rerender when the state is updated
