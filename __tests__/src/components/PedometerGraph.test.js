@@ -2,6 +2,9 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import PedometerGraph from '../../../src/components/PedometerGraph'
 
+/*
+jest.useFakeTimers() does not correctly mock javascript Date() timers.
+*/
 describe('PedometerGraph', () => {
   const component = renderer.create(<PedometerGraph />)
 
