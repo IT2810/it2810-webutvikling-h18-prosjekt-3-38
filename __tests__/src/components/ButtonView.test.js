@@ -55,10 +55,6 @@ it('matchEmojiToString and emojiNatural test', () => {
   expect(ButtonViewComponent.state.emojiSad).toEqual(false)
   expect(ButtonViewComponent.state.emojiNeutral).toEqual(true)
   ButtonViewComponent.saveData()
-  // var today = new Date()
-  // let dateKey = today.getDate() + '/' + parseInt(today.getMonth() + 1) + '/' + today.getFullYear()
-  // let dateAndEmoji = await AsyncStorage.getItem(dateKey)
-  // expect(dateAndEmoji).toEqual('emojiNautral')
 })
 afterAll(() => {
   it('save and fetch data', () => {
