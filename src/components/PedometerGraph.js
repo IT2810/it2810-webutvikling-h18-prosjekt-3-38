@@ -52,11 +52,13 @@ export default class PedometerGraph extends Component {
     for the current week.
   */
   async getData () {
-    var start = new Date()
-    var end = new Date()
-    for (let x = 0; x < end.getDay(); x++) {
+    let start = new Date()
+    let end = new Date()
+    let today = new Date()
+    for (let x = 0; x < today.getDay(); x++) {
       let dif = end.getDay() - x
       start.setDate(end.getDate() - dif)
+      end.setDate(start.getDate() + 1)
       this.setState({
         stepData: this.state.stepData.concat({
           x: this.weekday[x],
@@ -75,9 +77,11 @@ export default class PedometerGraph extends Component {
   _retrieveMotivationData = async () => {
     try {
       const value = JSON.parse(await AsyncStorage.getItem('motivationData'))
-      // Only set state if async store is empty
+      // Only set state value is not null
       if (value) {
         this.setState({ motivationData: value })
+      } else {
+        console.log('the value is null')
       }
     } catch (error) {
       console.log('Error: ', error)
