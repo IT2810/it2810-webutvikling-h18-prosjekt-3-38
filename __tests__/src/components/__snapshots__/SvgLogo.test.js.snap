@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  resizeMode="cover"
+>
+  <Image
+    fadeDuration={0}
+    onLoad={[Function]}
+    resizeMode="cover"
+    source={1}
+    style={
+      Object {
+        "alignSelf": "center",
+        "opacity": 0,
+        "transform": Array [
+          Object {
+            "scale": 0.07,
+          },
+        ],
+      }
+    }
+  />
+</View>
+`;

@@ -21,14 +21,6 @@ exports[`PedometerSensor renders correctly 1`] = `
     allowFontScaling={true}
     ellipsizeMode="tail"
   >
-    Steps taken in the last 24 hours: 
-    0
-  </Text>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
     Walk! And watch this go up: 
     0
   </Text>
