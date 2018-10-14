@@ -133,25 +133,25 @@ export default class PedometerGraph extends Component {
       // Or we render line chart with dummy data and motivation data
       return (
         [
-          this.retLineChart([{ x: 'Sun', y: 2545 }, { x: 'Mon', y: 1100 }], '#c43a31'),
+          this.retLineChart([ { x: 'Sun', y: 2545 }, { x: 'Mon', y: 1100 }, { x: 'Tus', y: 1945 }, { x: 'Wed', y: 3040 } ], '#c43a31'),
           this.retLineChart(this.state.motivationData, '#32CD32', 1)
         ]
       )
     } else {
       // Or else we render line chart with only dummy data
-      return this.retLineChart([{ x: 'Sun', y: 2545 }, { x: 'Mon', y: 1100 }], '#c43a31')
+      return this.retLineChart([{ x: 'Sun', y: 2545 }, { x: 'Mon', y: 1100 }, { x: 'Tus', y: 1945 }, { x: 'Wed', y: 3040 }], '#c43a31')
     }
-  }
-  memes () {
-    return ([this.retLineChart([{ x: 'Sun', y: 2545 }, { x: 'Mon', y: 1100 }], '#c43a31'),
-      this.retLineChart([{ x: 'Sun', y: 2000 }, { x: 'Mon', y: 2000 }], '#32CD32', 1)])
   }
   // Handles input event
   handleInput (event) {
+    const day = new Date().getDay()
     const { text } = event.nativeEvent
     let data = []
-    if (text !== '') {
+    if (text !== '' && day > 1) {
       data = this.state.stepData.map(obj => ({ x: obj.x, y: parseInt(text) }))
+    } else if (text !== '') {
+      let list = [{ x: 'Sun', y: 2545 }, { x: 'Mon', y: 1100 }, { x: 'Tus', y: 1945 }, { x: 'Wed', y: 3240 }]
+      data = list.map(obj => ({ x: obj.x, y: parseInt(text) }))
     }
     this.setState({ motivationData: data }, async () => {
       try {
