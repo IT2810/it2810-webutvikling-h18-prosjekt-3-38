@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import PedometerGraph from '../../../src/components/PedometerGraph'
-import { AsyncStorage } from 'react-native'
+// import { AsyncStorage } from 'react-native'
 
 /*
   The jest.useFakeTimers() function does not correctly mock javascript Date() timers.
@@ -10,11 +10,6 @@ import { AsyncStorage } from 'react-native'
 */
 describe('PedometerGraph', () => {
   const component = renderer.create(<PedometerGraph />)
-
-  test('renders correctley', () => {
-    let tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
-  })
 
   test('retrieves data correctley', () => {
     component.getInstance().getData().then(() => {
