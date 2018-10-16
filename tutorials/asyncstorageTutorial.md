@@ -41,4 +41,6 @@ fetchData = async () => {
   }
  }
 ```
+For our application, we used AsyncStorage in two instances. The first one was for saving which mood button was pressed, so that when the user logged into the application, the selected mood button would be coloured in. This data is placed in the phone memory using the setItem()-call with today’s date as the key. This means that the selected mood button at 2359 every day would be saved to the memory with the date as the key. This would be useful if we wanted to do something more with this data in the future, for example colouring in the graph according to the pressed mood button.
 
+The other instance where we used the AsyncStorage was when we saved the motivation goal for the graph. 
