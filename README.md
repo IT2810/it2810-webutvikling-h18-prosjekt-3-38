@@ -21,7 +21,7 @@ implemented with at least one of the expo APIs.
   - [Unit testing](#unit-testing)
 
 
-# Introduction to MoodWalker
+## Introduction to MoodWalker
 The MoodWalker is an app for tracking your steps as well as your mood. Each day the app asks you what mood you are in and logs it along with the steps you make this day. The app allows you to set a daily steps goal and lets you track your progress by visualizing steps taken for each day in the week up against your daily goal.
 
 ## Installation instructions
