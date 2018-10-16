@@ -7,10 +7,14 @@
 
 ## Install:
 
-* ```javascript
+Start by installing
+
+```javascript
 yarn add victory-native
 ```
+
 or
+
 ```javascript
 npm install victory-native --save
 ```
