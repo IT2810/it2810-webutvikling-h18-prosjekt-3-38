@@ -12,6 +12,13 @@ You will also need to install `expo-cli` globally so that you can use the cli to
 tests you will also need to install `jest` globally. To start running the expo server run `npm start` or `yarn start` and to run the tests
 run `npm test` or `yarn test`.
 
+## React Native
+For this project, we were asked to use React Native to build a mobile application. React Native is a JavaScript framework for rendering applications natively. It is based on the JS library React. This makes it easier for web developers to make apps. Code written in React Native renders using the native APIs, so that Objective-C is ran for iOS devices and Java for Android. This is different to previous methods for creating apps, where a combination of JS, HTML and CSS renders using websites.
+
+## Expo-CLI
+Expo was used to develop the app. It is a set of tools, libraries and services for React native that makes developing easier. Expo gives the developer access to the mobile device’s functionality, like the pedometer sensor used in our app. When yarn start is run, expo produces a QR-code. By downloading “expo” on a mobile device, the app can be previewed by scanning the QR-code. This made testing of the app really easy as we were developing.
+
+
 ## Victory
 Victory is a library featuring interactive components used to visualize data like pie charts, graphs etc. in react apps. Their work-in-progress library victory-native adds functionality to React Native apps. We use the components VictoryChart and VictoryLine to visualize the user’s weekly progress on steps taken. Remember that expo already includes a version of react-native-svg, therefore this doesn’t need to be installed separately. A brief tutorial can be found [here](https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-3-38/edit/issue/34/readme/tutorials/victoryTutorial.md/).
 
