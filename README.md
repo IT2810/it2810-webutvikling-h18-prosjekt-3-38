@@ -17,7 +17,6 @@ implemented with at least one of the expo APIs.
     - [Expo Icons](#expo-icons)
     - [Material UI bottom navigator](#material-ui-bottom-navigator)
     - [Styled Components](#styled-components)
-      - [Styled Components and Jest](#styled-components-and-jest)
   - [Platform Independency](#platform-independency)
   - [Unit testing](#unit-testing)
 
