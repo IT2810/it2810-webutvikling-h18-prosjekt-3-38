@@ -20,4 +20,4 @@ AsyncStorage is an asynchronous and persistent storage system that is global to 
 The key methods we used for AsyncStorage were AsyncStorage.setItem(myKey, “SaveThisString”) and AsyncStorage.getItem(myKey). A brief tutorial on AsyncStorage can be found [here](https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-3-38/edit/issue/34/readme/tutorials/asyncstorageTutorial.md/).
 
 ## Custom Fonts
-We chose to use custom fonts for all text in our application. Roboto-Medium is the one we used. A tutorial to see how custom fonts can be added to your projects can be viewed ### [here](https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-3-38/blob/issue/34/readme/tutorials/CustomFonts.md)
+We chose to use custom fonts for all text in our application. Roboto-Medium is the one we used. A tutorial to see how custom fonts can be added to your projects can be viewed [here](https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-3-38/blob/issue/34/readme/tutorials/CustomFonts.md)
