@@ -18,9 +18,12 @@ For this project, we were asked to use React Native to build a mobile applicatio
 ## Expo-CLI
 Expo was used to develop the app. It is a set of tools, libraries and services for React native that makes developing easier. Expo gives the developer access to the mobile device’s functionality, like the pedometer sensor used in our app. When yarn start is run, expo produces a QR-code. By downloading “expo” on a mobile device, the app can be previewed by scanning the QR-code. This made testing of the app really easy as we were developing.
 
+## Pedometer API
+We are using Expo’s Pedometer API to access the user’s current and past step count. The API utilizes the Core Motion API for Apple and Google Fit API for Android. 
 
 ## Victory
 Victory is a library featuring interactive components used to visualize data like pie charts, graphs etc. in react apps. Their work-in-progress library victory-native adds functionality to React Native apps. We use the components VictoryChart and VictoryLine to visualize the user’s weekly progress on steps taken. Remember that expo already includes a version of react-native-svg, therefore this doesn’t need to be installed separately. A brief tutorial can be found [here](https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-3-38/edit/issue/34/readme/tutorials/victoryTutorial.md/).
+
 
 ## AsyncStorage
 AsyncStorage is an asynchronous and persistent storage system that is global to the app. It works the same way as local storage for web. It can be used to for example save login information, so that the user won’t have to write it in every time.
