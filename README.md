@@ -3,6 +3,25 @@ This is the repository for our third project in web development. This project wa
 react-native and the expo API. The app was to be independent of mobile platforms and include some form of user interaction/input
 implemented with at least one of the expo APIs.
 
+- [Introduction to MoodWalker](#introduction-to-moodwalker)
+  - [Installation instructions](#installation-instructions)
+  - [React Native and Expo technology](#react-native-and-expo-technology)
+    - [React Native](#react-native)
+    - [AsyncStorage](#asyncstorage)
+    - [Animated library](#animated-library)
+    - [Expo-CLI](#expo-cli)
+    - [Pedometer API](#pedometer-api)
+  - [Third party libraries and components](#third-party-libraries-and-components)
+    - [Victory](#victory)
+    - [Custom Fonts](#custom-fonts)
+    - [Expo Icons](#expo-icons)
+    - [Material UI bottom navigator](#material-ui-bottom-navigator)
+    - [Styled Components](#styled-components)
+      - [Styled Components and Jest](#styled-components-and-jest)
+  - [Platform Independency](#platform-independency)
+  - [Unit testing](#unit-testing)
+
+
 # Introduction to MoodWalker
 The MoodWalker is an app for tracking your steps as well as your mood. Each day the app asks you what mood you are in and logs it along with the steps you make this day. The app allows you to set a daily steps goal and lets you track your progress by visualizing steps taken for each day in the week up against your daily goal.
 
