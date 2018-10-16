@@ -11,7 +11,7 @@ import { Font } from 'expo'
 
 To be able to use custom fonts, we chose to use the documentation on expo. To do this, you first need to download your desired font. Place the .ttf-file in project/assets/fonts. 
 
-## How to get started
+## Usage
 
 In the component where you want to use the custom font, import the dependency line above and add a asynchronous function. 
 ```javascript
