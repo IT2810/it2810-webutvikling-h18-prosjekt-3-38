@@ -1,6 +1,6 @@
 
 # Custom Fonts tutorial
-### [Back to README](https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-3-38/edit/issue/34/readme/README.md/)
+### [Back to README](../README.md/)
 
 ## Dependencies:
 ```javascript
