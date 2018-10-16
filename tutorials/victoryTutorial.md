@@ -7,7 +7,7 @@
 
 ## Install:
 
-Start by installing
+Start by installing victory native with yarn or npm:
 
 ```javascript
 yarn add victory-native
