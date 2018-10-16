@@ -1,4 +1,4 @@
-# AsyncStorage
+# AsyncStorage tutorial
 ### [Back to README](https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-3-38/new/issue/34/readme/README.md)
 
 AsyncStorage is an asynchronous and persistent storage system that is global to the app. It works the same way as local storage for web. It can be used to for example save login information, so that the user won’t have to write it in every time.
