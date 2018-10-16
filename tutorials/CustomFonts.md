@@ -37,15 +37,15 @@ Now, we apply logic in the render() function and add the font to the desired tex
 Here is the logic in the render() function:
 
 ```javascript
-          <View>
-           {this.state.fontLoaded == true ? (
-             <Text style={{
-               backgroundColor: '#247BA0',
-               fontFamily: 'Roboto-Medium',
-               color: 'white',
-               bottom: 20,
-               fontSize: 25
-             }}>YOUR TEXT WITH THE LOADED FONT</Text>)
-             : <Text>Font is not loaded yet...</Text>}
-         </View>
+  <View>
+     {this.state.fontLoaded == true ? (
+       <Text style={{
+         backgroundColor: '#247BA0',
+         fontFamily: 'Roboto-Medium',
+         color: 'white',
+         bottom: 20,
+         fontSize: 25
+       }}>YOUR TEXT WITH THE LOADED FONT</Text>)
+       : <Text>Font is not loaded yet...</Text>}
+   </View>
 ```
