@@ -10,7 +10,7 @@ The key methods we used for AsyncStorage were `AsyncStorage.setItem(myKey, “Sa
 ## Install
 * No additional installs required if you already have React Native installed.
 
-## How to get started
+## Usage
 To be able to use AsyncStorage, import the library from “react-native” using the following line:
 
 ```javascript
