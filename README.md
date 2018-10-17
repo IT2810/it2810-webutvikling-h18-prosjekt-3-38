@@ -40,10 +40,10 @@ For this project, we were asked to use React Native to build a mobile applicatio
 
 ### AsyncStorage
 AsyncStorage is an asynchronous and persistent storage system that is global to the app. It works the same way as local storage for web. It can be used to for example save login information, so that the user won’t have to write it in every time.
-The key methods we used for AsyncStorage were `AsyncStorage.setItem(myKey, “SaveThisString”)` and `AsyncStorage.getItem(myKey)`. A brief tutorial on AsyncStorage can be found [here](../tutorials/asyncstorageTutorial.md/).
+The key methods we used for AsyncStorage were `AsyncStorage.setItem(myKey, “SaveThisString”)` and `AsyncStorage.getItem(myKey)`. A brief tutorial on AsyncStorage can be found [here](../master/tutorials/asyncstorageTutorial.md/).
 
 ### Animated library
-We chose to use the Animated library because we wanted to animate our logo when you open the application and because it was already part of the react-native package so no further dependencies were required. A brief introduction to this library and how we used it can be found [here](../tutorials/animatedLibrary.md).
+We chose to use the Animated library because we wanted to animate our logo when you open the application and because it was already part of the react-native package so no further dependencies were required. A brief introduction to this library and how we used it can be found [here](../master/tutorials/animatedLibrary.md).
 
 ### Expo-CLI
 Expo was used to develop the app. It is a set of tools, libraries and services for React native that makes developing easier. Expo gives the developer access to the mobile device’s functionality, like the pedometer sensor used in our app. When yarn start is run, expo produces a QR-code. By downloading “expo” on a mobile device, the app can be previewed by scanning the QR-code. This made testing of the app really easy as we were developing.
@@ -54,10 +54,10 @@ We are using Expo’s Pedometer API to access the user’s current and past step
 ## Third party libraries and components
 
 ### Victory
-Victory is a library featuring interactive components used to visualize data like pie charts, graphs etc. in react apps. Their work-in-progress library victory-native adds functionality to React Native apps. We use the components VictoryChart and VictoryLine to visualize the user’s weekly progress on steps taken. Remember that expo already includes a version of react-native-svg, therefore this doesn’t need to be installed separately. A brief tutorial can be found [here](../tutorials/victoryTutorial.md/).
+Victory is a library featuring interactive components used to visualize data like pie charts, graphs etc. in react apps. Their work-in-progress library victory-native adds functionality to React Native apps. We use the components VictoryChart and VictoryLine to visualize the user’s weekly progress on steps taken. Remember that expo already includes a version of react-native-svg, therefore this doesn’t need to be installed separately. A brief tutorial can be found [here](../master/tutorials/victoryTutorial.md/).
 
 ### Custom Fonts
-We chose to use custom fonts for all text in our application. Roboto-Medium is the one we used. A tutorial to see how custom fonts can be added to your projects can be viewed [here](../tutorials/CustomFonts.md).
+We chose to use custom fonts for all text in our application. Roboto-Medium is the one we used. A tutorial to see how custom fonts can be added to your projects can be viewed [here](../master/tutorials/CustomFonts.md).
 
 ### Expo Icons
 We chose to use the expo-icons since this library was already installed through expo init. All icons from this library are available at `@expo/vector-icons` directory. Here, we found the emoji icons we needed for our application.
@@ -69,7 +69,7 @@ We decided to use a tab navigator for navigating between the home screen and the
 
 We discovered the [react-native-material-ui](https://github.com/xotahal/react-native-material-ui) library, which implements several material-themed UI components, and tried implementing its BottomNavigation component. However, due to limited documentation it proved difficult to implement the actual navigating functionality so the component was scrapped. 
 
-Upon further investigation we found the createMaterialBottomTab component which is part of the [react-navigation-material-bottom-tabs](https://reactnavigation.org/docs/en/material-bottom-tab-navigator.html) library. This component was used because the library was well documented and the component appeared to have an intuitive implementation. We used custom icons from expo for the tabs, which is further detailed here. A simple tutorial on usage of the navigator component can be found [here](../tutorials/bottomNavigator.md).
+Upon further investigation we found the createMaterialBottomTab component which is part of the [react-navigation-material-bottom-tabs](https://reactnavigation.org/docs/en/material-bottom-tab-navigator.html) library. This component was used because the library was well documented and the component appeared to have an intuitive implementation. We used custom icons from expo for the tabs, which is further detailed here. A simple tutorial on usage of the navigator component can be found [here](../master/tutorials/bottomNavigator.md).
 
 ### Styled Components
 We used the `styled` component from the `styled-components` library because it provides an easy-to-use, CSS-like way of styling your react components. Our opinion as that it also makes the code more structured. 
